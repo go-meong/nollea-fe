@@ -38,8 +38,8 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
       </div>
 
       <Drawer open>
-        <DrawerContent className="h-[80%] w-screen max-w-[600px] mx-auto">
-          <div className="mx-auto w-full px-4 overflow-y-auto scrollbar-none mb-25">
+        <DrawerContent className="max-w-[600px] mx-auto">
+          <div className="flex-1 mx-auto w-full px-4 overflow-y-auto scrollbar-none mb-25">
             <DrawerHeader className="">
               <div className="flex gap-2">
                 <CommonBadge type="음식점" />
@@ -64,10 +64,12 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                   </Text>
                   <Text typography="subtitle1">운영 시간</Text>
                 </div>
+
                 {/* 지도 */}
                 <div className="my-8">
                   <Map center={{ lat: 33.5563, lng: 126.79581 }} style={{ width: "100%", height: "145px" }}></Map>
                 </div>
+
                 {/* 혼잡도 */}
                 <div className="flex">
                   <Text typography="subtitle1" className="mr-8">
@@ -75,6 +77,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                   </Text>
                   <TrafficBadge type="여유" />
                 </div>
+
                 {/* 버스 막차 */}
                 <div className="flex">
                   <Text typography="subtitle1" className="mr-4">
@@ -82,11 +85,13 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                   </Text>
                   <Text typography="subtitle1">운영 시간</Text>
                 </div>
+
                 {/* 리뷰 */}
                 <div className="flex">
                   <Text typography="subtitle1" className="mr-11">
                     리뷰
                   </Text>
+
                   {/* 리뷰 like */}
                   <Text typography="subtitle1">
                     <div className="flex items-center gap-1">
@@ -113,9 +118,9 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                 </div>
               </DrawerDescription>
             </DrawerHeader>
-            <DrawerFooter className="mb-6 absolute bottom-0 w-[100%]">
-              <div className="flex justify-center items-center w-[100%]">
-                <Button className="bg-[#ff6500] w-[80%]" size="xl" stretch onClick={makeReview}>
+            <DrawerFooter className="mb-6 absolute bottom-0 w-full">
+              <div className="flex justify-center items-center w-full">
+                <Button className="bg-[#ff6500] w-[90%]" size="xl" stretch onClick={makeReview}>
                   리뷰 남기기
                 </Button>
               </div>
