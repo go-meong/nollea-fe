@@ -35,9 +35,9 @@ export default function RootLayout({
       >
         <QueryClientProvider>
           <ThemeProvider config={themeConfig}>
-            <div className="mx-auto min-h-screen max-w-[600px]">{children}</div>
             <ShootingStars />
             <StarsBackground />
+            <div className="mx-auto min-h-screen max-w-[600px]">{children}</div>
 
             <ReactQueryDevtools />
           </ThemeProvider>
