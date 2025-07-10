@@ -27,7 +27,7 @@ export default function StepPage() {
       {step === 1 && <Step2 goBack={goBack} goNext={goNext} />}
       {step === 2 && <Step3 goBack={goBack} goNext={goNext} />}
       {step === 3 && <Step4 goBack={goBack} goNext={goNext} />}
-      {step === 4 && <Loading />}
+      {step === 4 && <Loading goNext={goNext} />}
     </div>
   );
 }

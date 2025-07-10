@@ -30,7 +30,7 @@ export default function Step2({ goBack, goNext }: IStep2) {
           </Text>
         </div>
 
-        <RadioGroup.Root name="mood">
+        <RadioGroup.Root name="vehicle">
           <div className="flex flex-wrap gap-2 justify-center">
             {itemArray.map((item, index) => (
               <RadioGroup.Item value={item} key={item}>

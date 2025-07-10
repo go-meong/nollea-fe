@@ -5,6 +5,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeProvider, ThemeScript } from "@vapor-ui/core";
 import type { Metadata } from "next";
 import QueryClientProvider from "./QueryClientProvider";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "밤보고멍",
@@ -19,6 +20,10 @@ export default function RootLayout({
   return (
     <html lang="ko" suppressHydrationWarning>
       <head suppressHydrationWarning>
+        <Script
+          type="text/javascript"
+          src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_API_KEY}&libraries=services,clusterer`}
+        ></Script>
         <ThemeScript config={themeConfig} />
       </head>
       <body>
