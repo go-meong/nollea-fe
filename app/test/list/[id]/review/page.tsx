@@ -1,10 +1,10 @@
 "use client";
 
 import { useReviewTour } from "@/app/_hooks";
+import { useTourStore } from "@/app/_store/useTourStore";
 import { Textarea } from "@/components/ui/textfield";
-import { useTourStore } from "@/store/useTourStore";
 import { Button, Text } from "@vapor-ui/core";
-import { CloseOutlineIcon, LikeThumbIcon, DislikeThumbIcon } from "@vapor-ui/icons";
+import { CloseOutlineIcon, DislikeThumbIcon, LikeThumbIcon } from "@vapor-ui/icons";
 import { useRouter } from "next/navigation";
 import { use, useRef, useState } from "react";
 
@@ -45,13 +45,17 @@ export default function Review({ params }: { params: Promise<{ id: string }> }) 
         </Text>
         <div className="flex gap-4 justify-center mt-15">
           <Button
-            className={`w-[135px] h-[85px] border ${liked ? "border-[#ff6500] bg-[#fff3eb]" : "border-[#E1E1E8] bg-[#fdfdfe]"}`}
+            className={`w-[135px] h-[85px] border ${
+              liked ? "border-[#ff6500] bg-[#fff3eb]" : "border-[#E1E1E8] bg-[#fdfdfe]"
+            }`}
             onClick={() => setLiked(true)}
           >
             <LikeThumbIcon width={28} height={27} color={liked ? "#ff6500" : "#B4B4B4"} />
           </Button>
           <Button
-            className={`w-[135px] h-[85px] border ${!liked ? "border-[#ff6500] bg-[#fff3eb]" : "border-[#E1E1E8] bg-[#fdfdfe]"}`}
+            className={`w-[135px] h-[85px] border ${
+              !liked ? "border-[#ff6500] bg-[#fff3eb]" : "border-[#E1E1E8] bg-[#fdfdfe]"
+            }`}
             onClick={() => setLiked(false)}
           >
             <DislikeThumbIcon width={28} height={27} color={!liked ? "#ff6500" : "#B4B4B4"} />
