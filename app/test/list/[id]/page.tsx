@@ -24,6 +24,16 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
     router.push(`/test/list/${id}/review`);
   };
 
+  const getHour = () => {
+    if (!(serviceHours[0] && serviceHours[1])) {
+      return serviceHours[2];
+    }
+    if (serviceHours[2]) {
+      return `${serviceHours[0]} ~ ${serviceHours[1]} (${serviceHours[2]})`;
+    }
+    return `${serviceHours[0]} ~ ${serviceHours[1]}`;
+  };
+
   return (
     <div className="w-[100%] h-full flex flex-col justify-between">
       {/* cancel button */}
@@ -57,7 +67,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                   <Text typography="subtitle1" className="mr-4">
                     운영 시간
                   </Text>
-                  <Text typography="subtitle1">{serviceHours.join(" ~ ")}</Text>
+                  <Text typography="subtitle1">{getHour()}</Text>
                 </div>
                 <div className="flex">
                   <Text className="min-w-[52px] mr-4" typography="subtitle1">
