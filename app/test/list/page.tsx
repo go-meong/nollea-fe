@@ -3,10 +3,14 @@
 import CommonCard from "@/app/_components/common/CommonCard";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 import { Text } from "@vapor-ui/core";
-import { useTourStore } from "@/store/useTourStore";
+import { IRecommendTour, useTourStore } from "@/store/useTourStore";
 
 export default function Page() {
-  const { recommendTours } = useTourStore();
+  const { setRecommendTour, recommendTours } = useTourStore();
+
+  const handleClick = (tour: IRecommendTour) => {
+    setRecommendTour(tour);
+  };
 
   return (
     <>
@@ -39,6 +43,7 @@ export default function Page() {
                 time={tour.serviceHours}
                 lat={tour.coordinates[0]}
                 lon={tour.coordinates[1]}
+                onClick={() => handleClick(tour)}
               />
             ))}
           </div>
