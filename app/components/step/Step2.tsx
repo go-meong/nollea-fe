@@ -20,16 +20,8 @@ export default function Step2({ goBack, goNext }: IStep2) {
   return (
     <div className="h-screen flex flex-col pb-40 items-center justify-between">
       <div>
-        {/* progress bar */}
         {/* 뒤로 가기 */}
-        <Image
-          className="hover:cursor-pointer"
-          src="/back-icon.png"
-          width={30}
-          height={30}
-          alt="back"
-          onClick={goBack}
-        />
+        <Image className="hover:cursor-pointer" src="/back-icon.png" width={30} height={30} alt="back" onClick={goBack} />
         {/* 상단 텍스트 */}
         <div className="text-white mt-4 mb-14 font-bold text-[26px]">
           어떤 분위기의 밤을 <br />
@@ -38,22 +30,12 @@ export default function Step2({ goBack, goNext }: IStep2) {
         a
         <div className="flex flex-wrap gap-2 justify-center">
           {itemArray.map((item, index) => (
-            <CheckButton
-              key={item}
-              text={item}
-              onClick={handleClick}
-              checked={checked === index}
-              index={index}
-            />
+            <CheckButton key={item} text={item} onClick={handleClick} checked={checked === index} index={index} />
           ))}
         </div>
       </div>
 
-      <Button
-        className="bg-[#ff6500] w-80 h-12"
-        onClick={goNext}
-        disabled={checked === -1}
-      >
+      <Button className="bg-[#ff6500] w-80 h-12" onClick={goNext} disabled={checked === -1}>
         다음
       </Button>
     </div>

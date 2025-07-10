@@ -19,8 +19,6 @@ export default function Step1({ goNext }: IStep1) {
   return (
     <div className="h-screen flex flex-col pb-40 items-center justify-between">
       <div>
-        {/* progress bar */}
-
         {/* 상단 텍스트 */}
         <div className="text-white mt-20 mb-14 font-bold text-[26px]">
           누구와 함께 <br />
@@ -29,22 +27,12 @@ export default function Step1({ goNext }: IStep1) {
 
         <div className="flex flex-wrap gap-2 justify-center">
           {itemArray.map((item, index) => (
-            <CheckButton
-              key={item}
-              text={item}
-              onClick={handleClick}
-              checked={checked === index}
-              index={index}
-            />
+            <CheckButton key={item} text={item} onClick={handleClick} checked={checked === index} index={index} />
           ))}
         </div>
       </div>
 
-      <Button
-        className="bg-[#ff6500] w-80 h-12"
-        onClick={goNext}
-        disabled={checked === -1}
-      >
+      <Button className="bg-[#ff6500] w-80 h-12" onClick={goNext} disabled={checked === -1}>
         다음
       </Button>
     </div>

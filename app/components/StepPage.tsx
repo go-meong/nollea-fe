@@ -22,7 +22,7 @@ export default function StepPage() {
 
   return (
     <>
-      <Progress value={25} max={100} className="w-[100%]" />
+      {step !== 0 && <Progress value={25 * step} className="w-[100%]" />}
       {step === 0 && <Step0 goNext={goNext} />}
       {step === 1 && <Step1 goNext={goNext} />}
       {step === 2 && <Step2 goBack={goBack} goNext={goNext} />}
