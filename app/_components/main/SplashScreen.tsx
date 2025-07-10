@@ -8,7 +8,7 @@ export default function SplashScreen() {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center flex-1">
       {/* 상단 텍스트 */}
       <div className="mt-[128px] flex-1">
         <Text typography="body2" style={{ color: "var(--vapor-color-white)" }}>
