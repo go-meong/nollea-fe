@@ -1,11 +1,9 @@
 "use client";
 
 import { use } from "react";
+import { Button, Text } from "@vapor-ui/core";
 import { CloseOutlineIcon, LikeThumbIcon, DislikeThumbIcon } from "@vapor-ui/icons";
 import { Drawer, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader } from "@/components/ui/drawer";
-
-import * as React from "react";
-import { Button, Text } from "@vapor-ui/core";
 import Image from "next/image";
 import CommonBadge from "@/app/_components/common/CommonBadge";
 import { useRouter } from "next/navigation";
@@ -93,16 +91,14 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                   </Text>
 
                   {/* 리뷰 like */}
-                  <Text typography="subtitle1">
-                    <div className="flex items-center gap-1">
-                      <LikeThumbIcon />
-                      <Text typography="subtitle1" className="mr-4">
-                        80%
-                      </Text>
-                      <DislikeThumbIcon />
-                      <Text typography="subtitle1">20%</Text>
-                    </div>
-                  </Text>
+                  <div className="flex items-center gap-1">
+                    <LikeThumbIcon />
+                    <Text typography="subtitle1" className="mr-4">
+                      80%
+                    </Text>
+                    <DislikeThumbIcon />
+                    <Text typography="subtitle1">20%</Text>
+                  </div>
                 </div>
                 {/* 리뷰 comment */}
                 <div className="flex flex-col ml-18 mt-3 gap-3">
