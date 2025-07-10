@@ -58,7 +58,7 @@ export default function CommonCard({ id, imgUrl, badges, title, location, lat, l
         <Text typography="body4" className="mb-2">
           {location}
         </Text>
-        {userLat && userLon && <Text typography="body3">거리: {getDistance(userLat, userLon, lat, lon)}km</Text>}
+        {userLat && userLon && <Text typography="body3">거리: {getDistance(userLat, userLon, lat, lon).toFixed(1)}km</Text>}
         <Text typography="body3">
           운영시간: {time[0]} ~ {time[1]}
         </Text>
