@@ -2,6 +2,7 @@
 
 import { useReviewTour } from "@/app/_hooks";
 import { Textarea } from "@/components/ui/textfield";
+import { useTourStore } from "@/store/useTourStore";
 import { Button, Text } from "@vapor-ui/core";
 import { CloseOutlineIcon, LikeThumbIcon, DislikeThumbIcon } from "@vapor-ui/icons";
 import { useRouter } from "next/navigation";
@@ -13,6 +14,7 @@ export default function Review({ params }: { params: Promise<{ id: string }> }) 
   const [liked, setLiked] = useState(true);
   const reviewRef = useRef<HTMLTextAreaElement>(null);
   const { mutate: review } = useReviewTour();
+  const { recommendTour } = useTourStore();
 
   const goBack = () => {
     router.back();
@@ -38,7 +40,7 @@ export default function Review({ params }: { params: Promise<{ id: string }> }) 
 
       <div className="flex flex-col w-[100%] h-[90%] justify-center items-center">
         <Text typography="heading3" className="text-black text-center">
-          제주 수목원길 야시장
+          {recommendTour.title}
           <br /> 어떠셨나요?
         </Text>
         <div className="flex gap-4 justify-center mt-15">
