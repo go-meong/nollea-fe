@@ -1,20 +1,21 @@
 import { Text } from "@vapor-ui/core";
 import Image from "next/image";
-import CommonBadge, { TBadge } from "./CommonBadge";
+import CommonBadge from "./CommonBadge";
 import getDistance from "@/app/_lib/getDistance";
 import { useRouter } from "next/navigation";
+import { TCategoryList } from "@/app/_apis/getNightTour";
 
 interface ICard {
-  id: number;
+  id: string;
   imgUrl: string;
-  badges: TBadge[];
+  badges: TCategoryList[];
   title: string;
   location: string;
   userLat: number | null;
   userLon: number | null;
   lat: number;
   lon: number;
-  time: string;
+  time: string[];
 }
 
 export default function CommonCard({ id, imgUrl, badges, title, location, userLat, userLon, lat, lon, time }: ICard) {
@@ -40,7 +41,9 @@ export default function CommonCard({ id, imgUrl, badges, title, location, userLa
         </Text>
         <Text typography="body4">{location}</Text>
         <Text typography="body3">거리: {userLat && userLon ? `${getDistance(userLat, userLon, lat, lon)}km` : ""}</Text>
-        <Text typography="body3">운영시간: {time}</Text>
+        <Text typography="body3">
+          운영시간: {time[0]} ~ {time[1]}
+        </Text>
       </div>
     </div>
   );

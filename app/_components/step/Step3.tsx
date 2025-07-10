@@ -1,7 +1,7 @@
 import { Button, IconButton, RadioGroup, Text } from "@vapor-ui/core";
 import { BackPageOutlineIcon } from "@vapor-ui/icons";
-import { useState } from "react";
 import CheckButton from "./CheckButton";
+import { TMood, useSelectStore } from "@/store/useSelectStore";
 
 interface IStep3 {
   goBack: () => void;
@@ -9,10 +9,10 @@ interface IStep3 {
 }
 
 export default function Step3({ goBack, goNext }: IStep3) {
-  const [checked, setChecked] = useState(-1);
+  const { mood, setMood } = useSelectStore();
 
-  const handleClick = (index: number) => {
-    setChecked(index);
+  const handleClick = (item: string) => {
+    setMood(item as TMood);
   };
 
   const itemArray = ["차분", "로맨틱", "신남", "특별함", "힐링", "기쁨"];
@@ -22,14 +22,7 @@ export default function Step3({ goBack, goNext }: IStep3) {
       <div>
         {/* 뒤로 가기 */}
 
-        <IconButton
-          onClick={() => goBack()}
-          size="xl"
-          color="primary"
-          variant="ghost"
-          shape="square"
-          aria-label="뒤로가기?"
-        >
+        <IconButton onClick={() => goBack()} size="xl" color="primary" variant="ghost" shape="square" aria-label="뒤로가기?">
           <BackPageOutlineIcon color="#525463" width={18} height={18} />
         </IconButton>
         {/* 상단 텍스트 */}
@@ -42,22 +35,16 @@ export default function Step3({ goBack, goNext }: IStep3) {
 
         <RadioGroup.Root name="mood">
           <div className="grid grid-cols-2 gap-3">
-            {itemArray.map((item, index) => (
+            {itemArray.map((item) => (
               <RadioGroup.Item value={item} key={item}>
-                <CheckButton text={item} onClick={handleClick} checked={checked === index} index={index} />
+                <CheckButton text={item} onClick={handleClick} checked={item === mood} />
               </RadioGroup.Item>
             ))}
           </div>
         </RadioGroup.Root>
       </div>
 
-      <Button
-        className="bg-[#ff6500] mb-[113px] mt-[62px]"
-        size="xl"
-        stretch
-        onClick={goNext}
-        disabled={checked === -1}
-      >
+      <Button className="bg-[#ff6500] mb-[113px] mt-[62px]" size="xl" stretch onClick={goNext} disabled={!mood}>
         다음
       </Button>
     </div>

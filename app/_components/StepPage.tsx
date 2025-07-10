@@ -1,15 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Loading from "./step/Loading";
 import Step1 from "./step/Step1";
 import Step2 from "./step/Step2";
 import Step3 from "./step/Step3";
 import Step4 from "./step/Step4";
 import StepProgress from "./step/StepProgress";
+import { useSelectStore } from "@/store/useSelectStore";
 
 export default function StepPage() {
+  const { setJoin, setVehicle, setMood, setActivity } = useSelectStore();
   const [step, setStep] = useState(0);
+
+  useEffect(() => {
+    setJoin(null);
+    setVehicle(null);
+    setMood(null);
+    setActivity(null);
+  }, []);
 
   const goBack = () => {
     if (step === -1) return;
