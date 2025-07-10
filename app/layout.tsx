@@ -1,6 +1,6 @@
 import "./globals.css";
 
-import { themeConfig } from "@/app/lib/theme.config";
+import { themeConfig } from "@/app/_lib/theme.config";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeProvider, ThemeScript } from "@vapor-ui/core";
 import type { Metadata } from "next";
