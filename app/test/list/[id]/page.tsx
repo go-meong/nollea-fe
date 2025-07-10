@@ -84,14 +84,16 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                 )}
 
                 {/* AI 추천 이유 */}
-                <div className="flex flex-col">
-                  <Text className="text-start font-bold" typography="subtitle1">
-                    AI 추천 이유
-                  </Text>
-                  <Text className="text-left whitespace-pre-line" typography="subtitle1">
-                    {recommendReason}
-                  </Text>
-                </div>
+                {recommendReason && (
+                  <div className="flex flex-col">
+                    <Text className="text-start font-bold" typography="subtitle1">
+                      AI 추천 이유
+                    </Text>
+                    <Text className="text-left whitespace-pre-line" typography="subtitle1">
+                      {recommendReason}
+                    </Text>
+                  </div>
+                )}
 
                 {/* 리뷰 */}
                 <div className="flex">
