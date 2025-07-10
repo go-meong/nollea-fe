@@ -18,7 +18,7 @@ export default function SplashScreen() {
       </div>
 
       {/* 이미지 */}
-      <div className="w-screen max-w-[399px]">
+      <div className="w-screen max-w-[600px]">
         <Image className="relative" src="/star1.png" width={282} height={244} alt="star" />
         <Image className="absolute" src="/char1.png" width={100} height={204} alt="char" />
       </div>

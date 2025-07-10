@@ -4,8 +4,8 @@ import { themeConfig } from "@/app/_lib/theme.config";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeProvider, ThemeScript } from "@vapor-ui/core";
 import type { Metadata } from "next";
-import QueryClientProvider from "./QueryClientProvider";
 import Script from "next/script";
+import QueryClientProvider from "./QueryClientProvider";
 
 export const metadata: Metadata = {
   title: "밤보고멍",
@@ -26,10 +26,14 @@ export default function RootLayout({
         ></Script>
         <ThemeScript config={themeConfig} />
       </head>
-      <body>
+      <body
+        style={{
+          backgroundColor: "var(--vapor-color-black)",
+        }}
+      >
         <QueryClientProvider>
           <ThemeProvider config={themeConfig}>
-            <div className="mx-auto min-h-screen max-w-[393px]">{children}</div>
+            <div className="mx-auto min-h-screen max-w-[600px]">{children}</div>
             <ReactQueryDevtools />
           </ThemeProvider>
         </QueryClientProvider>
