@@ -15,7 +15,7 @@ export default function Step2({ goBack, goNext }: IStep2) {
     setChecked(index);
   };
 
-  const itemArray = ["도보", "대중교통", "자가용", "렌트카"];
+  const itemArray = ["도보나 대중교통 이용", "차량 이용 (렌트카, 자가용 등)"];
 
   return (
     <div className="flex flex-col flex-1 items-center justify-between">
