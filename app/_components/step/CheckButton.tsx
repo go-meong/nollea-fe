@@ -12,7 +12,7 @@ export default function CheckButton({ text, onClick, checked, index }: ICheckBut
   return (
     <Button
       className={clsx(
-        "h-30 w-44 border text-[18px] hover:text-[#ff6500]",
+        "h-30 w-44 border text-[18px] hover:text-[#ff6500] hover:border-[#ff6500]",
         checked ? "font-extrabold bg-[#140700] text-[#ff6500]" : "bg-[#131313] border-[#6C6E7E]"
       )}
       onClick={() => onClick(index)}
