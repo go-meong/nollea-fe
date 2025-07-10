@@ -102,12 +102,7 @@ export const ShootingStars: React.FC<ShootingStarsProps> = ({
           })
           .filter((star) => {
             // 화면을 벗어난 별들 제거
-            return !(
-              star.x < -20 ||
-              star.x > window.innerWidth + 20 ||
-              star.y < -20 ||
-              star.y > window.innerHeight + 20
-            );
+            return !(star.x < -20 || star.x > window.innerWidth + 20 || star.y < -20 || star.y > window.innerHeight + 20);
           });
       });
     };
