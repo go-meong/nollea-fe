@@ -1,7 +1,7 @@
 import { Button, RadioGroup, Text } from "@vapor-ui/core";
-import CheckButton from "./CheckButton";
-import { useState } from "react";
 import Image from "next/image";
+import { useState } from "react";
+import CheckButton from "./CheckButton";
 
 interface IStep3 {
   goBack: () => void;
@@ -18,10 +18,17 @@ export default function Step3({ goBack, goNext }: IStep3) {
   const itemArray = ["차분", "로맨틱", "신남", "특별함", "힐링", "기쁨"];
 
   return (
-    <div className="h-screen flex flex-col pb-40 items-center justify-between">
+    <div className="flex flex-col pb-40 items-center justify-between">
       <div>
         {/* 뒤로 가기 */}
-        <Image className="hover:cursor-pointer" src="/back-icon.png" width={30} height={30} alt="back" onClick={goBack} />
+        <Image
+          className="hover:cursor-pointer"
+          src="/back-icon.png"
+          width={30}
+          height={30}
+          alt="back"
+          onClick={goBack}
+        />
 
         {/* 상단 텍스트 */}
         <div className="mt-4 mb-14">

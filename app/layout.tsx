@@ -32,7 +32,14 @@ export default function RootLayout({
           <ThemeProvider config={themeConfig}>
             <ShootingStars />
             <StarsBackground />
-            <div className="mx-auto min-h-screen max-w-[600px]">{children}</div>
+            <div
+              className="mx-auto max-w-[600px] flex flex-col"
+              style={{
+                minHeight: "100dvh",
+              }}
+            >
+              {children}
+            </div>
 
             <ReactQueryDevtools />
           </ThemeProvider>

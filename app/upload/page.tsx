@@ -20,7 +20,7 @@ export default function UploadPage() {
   }, []);
 
   return (
-    <div className="min-h-screen relative">
+    <div className="flex-1 relative">
       <Header />
       <div className="py-5 px-7 flex flex-col gap-6">
         <PlaceName />

@@ -1,8 +1,8 @@
-import { Button, Text, RadioGroup } from "@vapor-ui/core";
-import CheckButton from "./CheckButton";
-import { useState } from "react";
+import { Button, RadioGroup, Text } from "@vapor-ui/core";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import CheckButton from "./CheckButton";
 
 interface IStep1 {
   goNext: () => void;
@@ -19,10 +19,17 @@ export default function Step1({ goNext }: IStep1) {
   const itemArray = ["혼자", "친구", "연인", "가족", "동료", "기타"];
 
   return (
-    <div className="h-screen flex flex-col pb-40 items-center justify-between">
+    <div className="flex flex-col pb-40 items-center justify-between">
       <div>
         {/* 뒤로 가기 */}
-        <Image onClick={() => router.back()} className="hover:cursor-pointer" src="/back-icon.png" width={30} height={30} alt="back" />
+        <Image
+          onClick={() => router.back()}
+          className="hover:cursor-pointer"
+          src="/back-icon.png"
+          width={30}
+          height={30}
+          alt="back"
+        />
 
         {/* 상단 텍스트 */}
         <div className="mt-4 mb-14">
