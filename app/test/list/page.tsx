@@ -1,7 +1,7 @@
 "use client";
 
 import CommonCard from "@/app/_components/common/CommonCard";
-import CustomMap from "@/app/_components/CustomMap";
+import { Map, MapMarker } from "react-kakao-maps-sdk";
 import { Text } from "@vapor-ui/core";
 import { useEffect, useState } from "react";
 
@@ -21,56 +21,60 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="relative w-full h-full flex flex-col justify-between">
+    <>
       {/* 지도 */}
-      <div className="w-full h-full">
-        <CustomMap />
-      </div>
+      <Map center={{ lat: 33.5563, lng: 126.79581 }} style={{ width: "105%", height: "400px" }}>
+        <MapMarker position={{ lat: 33.55635, lng: 126.795841 }}>
+          <div style={{ color: "#000" }}>Hello World!</div>
+        </MapMarker>
+      </Map>
 
       {/* list */}
-      <div className="w-full absolute left-0 bottom-0 h-[70%] rounded-t-3xl">
-        <div className="w-full mx-auto flex flex-col gap-4 pt-12 pb-5 px-5">
-          <Text typography="heading3" foreground="accent" className="text-center mb-3">
+      <div className="fixed z-10 h-[65%] w-full max-w-[600px] rounded-2xl bottom-0 bg-black overflow-y-scroll scrollbar-none">
+        <div className="flex flex-col">
+          <Text typography="heading3" foreground="accent" className="text-center mb-6 mt-10">
             특별한 제주의 밤을 즐겨보세요!
           </Text>
-          <CommonCard
-            id={0}
-            imgUrl="/ex-img.png"
-            badges={["야경", "로맨틱", "야시장"]}
-            title="title"
-            location="location"
-            time="time"
-            userLat={userLat}
-            userLon={userLon}
-            lat={123}
-            lon={10}
-          />
-          <CommonCard
-            id={1}
-            imgUrl="/ex-img.png"
-            badges={["야경", "로맨틱", "야시장"]}
-            title="title"
-            location="location"
-            time="time"
-            userLat={userLat}
-            userLon={userLon}
-            lat={123}
-            lon={10}
-          />
-          <CommonCard
-            id={2}
-            imgUrl="/ex-img.png"
-            badges={["야경", "로맨틱", "야시장"]}
-            title="title"
-            location="location"
-            time="time"
-            userLat={userLat}
-            userLon={userLon}
-            lat={123}
-            lon={10}
-          />
+          <div className="flex flex-col gap-3 px-3">
+            <CommonCard
+              id={0}
+              imgUrl="/ex-img.png"
+              badges={["야경", "로맨틱"]}
+              title="title"
+              location="location"
+              time="time"
+              userLat={userLat}
+              userLon={userLon}
+              lat={123}
+              lon={10}
+            />
+            <CommonCard
+              id={0}
+              imgUrl="/ex-img.png"
+              badges={["야경", "로맨틱"]}
+              title="title"
+              location="location"
+              time="time"
+              userLat={userLat}
+              userLon={userLon}
+              lat={123}
+              lon={10}
+            />
+            <CommonCard
+              id={0}
+              imgUrl="/ex-img.png"
+              badges={["야경", "로맨틱"]}
+              title="title"
+              location="location"
+              time="time"
+              userLat={userLat}
+              userLon={userLon}
+              lat={123}
+              lon={10}
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
