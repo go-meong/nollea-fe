@@ -1,10 +1,10 @@
 import "./globals.css";
 
-import type { Metadata } from "next";
-import QueryClientProvider from "./QueryClientProvider";
-import { ThemeProvider, ThemeScript } from "@vapor-ui/core";
 import { themeConfig } from "@/app/lib/theme.config";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { ThemeProvider, ThemeScript } from "@vapor-ui/core";
+import type { Metadata } from "next";
+import QueryClientProvider from "./QueryClientProvider";
 
 export const metadata: Metadata = {
   title: "밤보고멍",
