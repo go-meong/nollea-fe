@@ -1,6 +1,6 @@
 "use client";
 
-import CommonCard from "@/app/_components/common/CommonCard";
+import CommonCard from "@/app/_components/CommonCard";
 import { useRecommendTours } from "@/app/_hooks";
 import { useSelectStore } from "@/app/_store/useSelectStore";
 import { IRecommendTour, useTourStore } from "@/app/_store/useTourStore";
