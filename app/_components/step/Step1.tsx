@@ -19,7 +19,7 @@ export default function Step1({ goNext }: IStep1) {
   const itemArray = ["혼자", "친구", "연인", "가족", "동료", "기타"];
 
   return (
-    <div className="flex flex-col pb-40 items-center justify-between">
+    <div className="flex flex-col flex-1 items-center justify-between">
       <div>
         {/* 뒤로 가기 */}
         <Image
@@ -33,14 +33,14 @@ export default function Step1({ goNext }: IStep1) {
 
         {/* 상단 텍스트 */}
         <div className="mt-4 mb-14">
-          <Text typography="heading3" foreground="accent">
+          <Text typography="heading3" style={{ color: "var(--vapor-color-white)" }}>
             누구와 함께 <br />
             제주도에 오셨나요?
           </Text>
         </div>
 
-        <RadioGroup.Root name="with">
-          <div className="flex flex-wrap gap-2 justify-center">
+        <RadioGroup.Root name="with" className="flex-1">
+          <div className="grid grid-cols-2 gap-3">
             {itemArray.map((item, index) => (
               <RadioGroup.Item value={item} key={item}>
                 <CheckButton text={item} onClick={handleClick} checked={checked === index} index={index} />
@@ -50,7 +50,13 @@ export default function Step1({ goNext }: IStep1) {
         </RadioGroup.Root>
       </div>
 
-      <Button className="bg-[#ff6500] h-12" stretch onClick={goNext} disabled={checked === -1}>
+      <Button
+        className="bg-[#ff6500] mb-[113px] mt-[62px]"
+        size="xl"
+        stretch
+        onClick={goNext}
+        disabled={checked === -1}
+      >
         다음
       </Button>
     </div>
