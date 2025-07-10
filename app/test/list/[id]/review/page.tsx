@@ -1,5 +1,6 @@
 "use client";
 
+import { Textarea } from "@/components/ui/textfield";
 import { Button, Text } from "@vapor-ui/core";
 import { CloseOutlineIcon, LikeThumbIcon, DislikeThumbIcon } from "@vapor-ui/icons";
 import { useRouter } from "next/navigation";
@@ -29,12 +30,16 @@ export default function Review() {
             className={`w-[135px] h-[85px] border ${like ? "border-[#ff6500] bg-[#fff3eb]" : "border-[#E1E1E8] bg-[#fdfdfe]"}`}
             onClick={() => setLike(true)}
           >
-            <LikeThumbIcon width={28} height={27} />
+            <LikeThumbIcon width={28} height={27} color={like ? "#ff6500" : "#B4B4B4"} />
           </Button>
-          <Button className="w-[135px] h-[85px]">
-            <DislikeThumbIcon width={28} height={27} />
+          <Button
+            className={`w-[135px] h-[85px] border ${!like ? "border-[#ff6500] bg-[#fff3eb]" : "border-[#E1E1E8] bg-[#fdfdfe]"}`}
+            onClick={() => setLike(false)}
+          >
+            <DislikeThumbIcon width={28} height={27} color={!like ? "#ff6500" : "#B4B4B4"} />
           </Button>
         </div>
+        <Textarea />
       </div>
     </div>
   );
