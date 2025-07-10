@@ -18,11 +18,14 @@ export default function SplashScreen() {
       </div>
 
       {/* 버튼 */}
-      <Button className="w-80 h-12 bg-[#FF6500] mb-[113px]" onClick={() => router.push("/home")}>
-        <Text foreground="accent" typography="body1">
-          같이 밤보고멍, 시작해볼까요?
-        </Text>
-      </Button>
+      <div className="flex flex-col items-center">
+        <Image src="/face.png" width={100} height={100} alt="face" className="relative top-2 z-1" />
+        <Button className="w-80 h-12 bg-[#FF6500] mb-[113px]" onClick={() => router.push("/home")}>
+          <Text foreground="accent" typography="body1">
+            같이 밤보고멍, 시작해볼까요?
+          </Text>
+        </Button>
+      </div>
     </div>
   );
 }
