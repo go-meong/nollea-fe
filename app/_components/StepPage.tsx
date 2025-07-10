@@ -7,10 +7,12 @@ import Step3 from "./step/Step3";
 import Step4 from "./step/Step4";
 import StepProgress from "./step/StepProgress";
 import { useSelectStore } from "@/store/useSelectStore";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function StepPage() {
   const { setJoin, setVehicle, setMood, setActivity } = useSelectStore();
   const [step, setStep] = useState(0);
+  const [direction, setDirection] = useState<1 | -1>(1);
 
   useEffect(() => {
     setJoin(null);
@@ -21,20 +23,67 @@ export default function StepPage() {
 
   const goBack = () => {
     if (step === -1) return;
-    setStep(step - 1);
+    setDirection(-1);
+    setStep((prev) => prev - 1);
   };
 
   const goNext = () => {
-    setStep(step + 1);
+    setDirection(1);
+    setStep((prev) => prev + 1);
+  };
+
+  const renderStep = () => {
+    switch (step) {
+      case 0:
+        return <Step1 key="step1" goNext={goNext} />;
+      case 1:
+        return <Step2 key="step2" goBack={goBack} goNext={goNext} />;
+      case 2:
+        return <Step3 key="step3" goBack={goBack} goNext={goNext} />;
+      case 3:
+        return <Step4 key="step4" goBack={goBack} />;
+      default:
+        return null;
+    }
+  };
+
+  const slideVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? "100%" : "-100%",
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction: number) => ({
+      x: direction > 0 ? "-100%" : "100%",
+      opacity: 0,
+    }),
   };
 
   return (
     <div className="flex-1 flex flex-col">
       {step > -1 && step < 4 && <StepProgress value={25 * step} />}
-      {step === 0 && <Step1 goNext={goNext} />}
-      {step === 1 && <Step2 goBack={goBack} goNext={goNext} />}
-      {step === 2 && <Step3 goBack={goBack} goNext={goNext} />}
-      {step === 3 && <Step4 goBack={goBack} />}
+
+      <AnimatePresence mode="wait" custom={direction}>
+        <motion.div
+          key={step}
+          custom={direction}
+          variants={slideVariants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{
+            type: "tween",
+            ease: "easeInOut",
+            duration: 0.3,
+          }}
+          className="inset-0 w-full h-full overflow-hidden"
+        >
+          {renderStep()}
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 }
