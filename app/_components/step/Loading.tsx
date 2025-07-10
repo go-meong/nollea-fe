@@ -1,16 +1,15 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-interface ILoading {
-  goNext: () => void;
-}
+export default function Loading() {
+  const router = useRouter();
 
-export default function Loading({ goNext }: ILoading) {
   useEffect(() => {
     const timer = setTimeout(() => {
-      goNext();
+      router.push("/test/list");
     }, 500);
 
     return () => {

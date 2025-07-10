@@ -2,8 +2,10 @@ import { Text } from "@vapor-ui/core";
 import Image from "next/image";
 import CommonBadge, { TBadge } from "./CommonBadge";
 import getDistance from "@/app/_lib/getDistance";
+import { useRouter } from "next/navigation";
 
 interface ICard {
+  id: number;
   imgUrl: string;
   badges: TBadge[];
   title: string;
@@ -15,9 +17,15 @@ interface ICard {
   time: string;
 }
 
-export default function CommonCard({ imgUrl, badges, title, location, userLat, userLon, lat, lon, time }: ICard) {
+export default function CommonCard({ id, imgUrl, badges, title, location, userLat, userLon, lat, lon, time }: ICard) {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(`/test/list/${id}`);
+  };
+
   return (
-    <div className="flex w-full gap-4 bg-white p-4 rounded-sm">
+    <div className="flex w-full gap-4 bg-white p-4 rounded-sm hover:cursor-pointer" onClick={handleClick}>
       <div className="relative w-[108px] h-[108px] shrink-0">
         <Image src={imgUrl} alt="img" layout="fill" objectFit="cover" className="rounded-sm" />
       </div>

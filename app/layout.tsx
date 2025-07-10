@@ -23,8 +23,8 @@ export default function RootLayout({
     <html lang="ko" suppressHydrationWarning>
       <head suppressHydrationWarning>
         <Script
-          type="text/javascript"
           src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_API_KEY}&libraries=services,clusterer`}
+          strategy="beforeInteractive"
         ></Script>
         <ThemeScript config={themeConfig} />
       </head>
