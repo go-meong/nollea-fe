@@ -1,4 +1,5 @@
 import { Button } from "@vapor-ui/core";
+import clsx from "clsx";
 
 interface ICheckButton {
   text: string;
@@ -10,9 +11,10 @@ interface ICheckButton {
 export default function CheckButton({ text, onClick, checked, index }: ICheckButton) {
   return (
     <Button
-      className={`h-30 w-44 ${checked ? "font-extrabold" : ""} bg-[${checked ? "#140700" : "#131313"}] border text-[18px] text-[${
-        checked ? "#ff6500" : "#6C6E7E"
-      }] hover:text-[#ff6500] bg-[#140700]`}
+      className={clsx(
+        "h-30 w-44 border text-[18px] hover:text-[#ff6500]",
+        checked ? "font-extrabold bg-[#140700] text-[#ff6500]" : "bg-[#131313] border-[#6C6E7E]"
+      )}
       onClick={() => onClick(index)}
     >
       {text}
