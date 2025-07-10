@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
-import Step1 from "./step/Step1";
-import Step2 from "./step/Step2";
-import Step3 from "./step/Step3";
-import Step4 from "./step/Step4";
-import StepProgress from "./step/StepProgress";
 import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
+import Step1 from "../test/_components/step/Step1";
+import Step2 from "../test/_components/step/Step2";
+import Step3 from "../test/_components/step/Step3";
+import Step4 from "../test/_components/step/Step4";
+import StepProgress from "../test/_components/step/StepProgress";
 
 export default function StepPage() {
   const [step, setStep] = useState(0);

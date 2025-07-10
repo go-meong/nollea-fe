@@ -1,10 +1,10 @@
 "use client";
 
 import CommonCard from "@/app/_components/common/CommonCard";
-import Loading from "@/app/_components/step/Loading";
 import { useRecommendTours } from "@/app/_hooks";
 import { useSelectStore } from "@/app/_store/useSelectStore";
 import { IRecommendTour, useTourStore } from "@/app/_store/useTourStore";
+import Loading from "@/app/test/_components/step/Loading";
 import { Text } from "@vapor-ui/core";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 
