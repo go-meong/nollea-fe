@@ -57,7 +57,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                   <Text typography="subtitle1" className="mr-4">
                     운영 시간
                   </Text>
-                  <Text typography="subtitle1">{serviceHours.join(" ")}</Text>
+                  <Text typography="subtitle1">{serviceHours.join(" ~ ")}</Text>
                 </div>
                 <div className="flex">
                   <Text className="min-w-[52px] mr-4" typography="subtitle1">
