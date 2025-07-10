@@ -10,7 +10,7 @@ export default function SplashScreen() {
   return (
     <div className="h-screen flex flex-col items-center">
       {/* 상단 텍스트 */}
-      <div className="mt-[172px] flex-1">
+      <div className="mt-[128px] flex-1">
         <Text typography="body2" style={{ color: "var(--vapor-color-white)" }}>
           제주도에서 즐기는 새로운 야간 문화
         </Text>
