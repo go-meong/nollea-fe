@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Loading from "./step/Loading";
 import Step1 from "./step/Step1";
 import Step2 from "./step/Step2";
 import Step3 from "./step/Step3";
@@ -35,8 +34,7 @@ export default function StepPage() {
       {step === 0 && <Step1 goNext={goNext} />}
       {step === 1 && <Step2 goBack={goBack} goNext={goNext} />}
       {step === 2 && <Step3 goBack={goBack} goNext={goNext} />}
-      {step === 3 && <Step4 goBack={goBack} goNext={goNext} />}
-      {step === 4 && <Loading />}
+      {step === 3 && <Step4 goBack={goBack} />}
     </div>
   );
 }
