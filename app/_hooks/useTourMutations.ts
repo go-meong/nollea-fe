@@ -13,7 +13,6 @@ type ReviewTourRequest = {
 type UploadTourRequest = {
   fullAddress: string;
   title: string;
-  zipcode: string;
   serviceHours: [string, string];
   categoryList: ("FOOD" | "NIGHT_MARKET" | "NATURE" | "FESTIVAL" | "WALKING_PATH" | "NIGHT_VIEW" | "ROMANTIC")[];
   description: string;

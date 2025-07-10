@@ -22,13 +22,9 @@ export default function UploadPage() {
   const [image, setImage] = useState<string | null>(null);
   const [file, setFile] = useState<File | null>(null);
 
-  console.log(category);
-  console.log(description);
-  console.log(image);
-
   const isDisabled = !placeName || !address || !postcode || !operatingHours || !category || !description || !image;
 
-  const { mutate: createTour } = useUploadTour();
+  const { mutate: createTour, isPending: isCreating } = useUploadTour();
   const { mutateAsync: uploadPicture, isPending: isUploading } = useUploadPicture();
 
   return (
@@ -55,10 +51,13 @@ export default function UploadPage() {
 
             const imageResponse = await uploadPicture(file);
 
+            console.log(imageResponse);
+
+            return;
+
             createTour({
               title: placeName,
               fullAddress: address,
-              zipcode: postcode,
               serviceHours: operatingHours,
               categoryList: category.map((c) => c.value) as (
                 | "FOOD"
@@ -73,7 +72,7 @@ export default function UploadPage() {
               imageId: imageResponse.data.id,
             });
           }}
-          disabled={isDisabled || isUploading}
+          disabled={isDisabled || isUploading || isCreating}
         >
           저장하기
         </Button>

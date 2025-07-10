@@ -111,8 +111,6 @@ export function Category({
 
   const selectables = FRAMEWORKS.filter((framework) => !selected.includes(framework));
 
-  console.log(selectables, selected, inputValue);
-
   return (
     <div className="flex flex-col gap-2">
       <Text
@@ -137,7 +135,7 @@ export function Category({
           <div className="flex flex-wrap gap-1">
             {selected.map((framework) => {
               return (
-                <Badge key={framework.value} variant="secondary">
+                <Badge key={framework.id} variant="secondary">
                   {framework.label}
                   <button
                     className="ml-1 rounded-full outline-none"
@@ -178,13 +176,12 @@ export function Category({
                   {selectables.map((framework) => {
                     return (
                       <CommandItem
-                        key={framework.value}
+                        key={framework.id}
                         onMouseDown={(e) => {
                           e.preventDefault();
                           e.stopPropagation();
                         }}
-                        onSelect={(value) => {
-                          console.log(value);
+                        onSelect={() => {
                           setInputValue("");
                           setSelected((prev) => [...prev, framework]);
                         }}
