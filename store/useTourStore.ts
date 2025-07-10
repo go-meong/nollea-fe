@@ -16,12 +16,10 @@ export interface IRecommendTour {
 
 interface TourState {
   recommendTour: IRecommendTour;
-  // recommendTours: IRecommendTour[];
 }
 
 interface TourAction {
   setRecommendTour: (recommendTour: IRecommendTour) => void;
-  // setRecommendTours: (recommendTours: IRecommendTour[]) => void;
 }
 
 export const useTourStore = create<TourState & TourAction>()(
@@ -37,6 +35,5 @@ export const useTourStore = create<TourState & TourAction>()(
     recommendTour: null,
 
     setRecommendTour: (recommendTour) => set({ recommendTour }),
-    // setRecommendTours: (recommendTours) => set({ recommendTours }),
   }))
 );

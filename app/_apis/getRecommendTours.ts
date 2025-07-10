@@ -1,3 +1,4 @@
+import { IRecommendTour } from "@/store/useTourStore";
 import { ApiResponse, http } from "../_lib/http";
 
 type Request = {
@@ -7,16 +8,7 @@ type Request = {
   activity: string;
 };
 
-type RecommendTour = {
-  id: string;
-  categoryList: ("FOOD" | "NIGHT_MARKET" | "NATURE" | "FESTIVAL" | "WALKING_PATH" | "NIGHT_VIEW" | "ROMANTIC")[];
-  fullAddress: string;
-  title: string;
-  coordinates: [number, number];
-  serviceHours: [string, string];
-};
-
-export const getRecommendTours = async (request: Request): Promise<ApiResponse<RecommendTour[]>> => {
+export const getRecommendTours = async (request: Request): Promise<ApiResponse<IRecommendTour[]>> => {
   const response = await http.get("/api/v1/recommend-tour", {
     params: request,
   });

@@ -1,20 +1,7 @@
+import { IRecommendTour } from "@/store/useTourStore";
 import { ApiResponse, http } from "../_lib/http";
 
-type RecommendTour = {
-  id: string;
-  fullAddress: string;
-  title: string;
-  serviceHours: [string, string];
-  description: string;
-  congestionLevel: string;
-  lastBusInfo: string;
-  positiveRate: number;
-  negativeRate: number;
-  reviews: string[];
-  imageUrl: string;
-};
-
-export const getRecommendTour = async (id: string): Promise<ApiResponse<RecommendTour>> => {
+export const getRecommendTour = async (id: string): Promise<ApiResponse<IRecommendTour>> => {
   const response = await http.get(`/api/v1/recommend-tour/${id}`);
   return response.data;
 };

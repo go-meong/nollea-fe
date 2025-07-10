@@ -14,7 +14,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter();
   const { id } = use(params);
   const { recommendTour } = useTourStore();
-  const { title, fullAddress, description, serviceHours, coordinates, positiveRate, negativeRate, reviews } = recommendTour;
+  const { title, fullAddress, description, serviceHours, coordinates, reviewRatios, reviews } = recommendTour;
 
   const goBack = () => {
     router.back();
@@ -85,10 +85,10 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                   <div className="flex items-center gap-1">
                     <LikeThumbIcon />
                     <Text typography="subtitle1" className="mr-4">
-                      {positiveRate}%
+                      {reviewRatios[0]}%
                     </Text>
                     <DislikeThumbIcon />
-                    <Text typography="subtitle1">{negativeRate}%</Text>
+                    <Text typography="subtitle1">{reviewRatios[1]}%</Text>
                   </div>
                 </div>
                 {/* 리뷰 comment */}

@@ -21,10 +21,6 @@ export default function Page() {
 
   console.log(join, vehicle, mood, activity);
 
-  const handleClick = (tour: IRecommendTour) => {
-    setRecommendTour(tour);
-  };
-
   if (isLoading) return <Loading />;
 
   console.log(data);
@@ -49,7 +45,7 @@ export default function Page() {
             특별한 제주의 밤을 즐겨보세요!
           </Text>
           <div className="flex flex-col gap-3 px-3">
-            {data?.data.map((tour) => (
+            {data?.data.map((tour: IRecommendTour) => (
               <CommonCard
                 key={tour.title}
                 id={tour.id}
@@ -60,7 +56,7 @@ export default function Page() {
                 time={tour.serviceHours}
                 lat={tour.coordinates[0]}
                 lon={tour.coordinates[1]}
-                onClick={() => handleClick(tour)}
+                onClick={() => setRecommendTour(tour)}
               />
             ))}
           </div>
