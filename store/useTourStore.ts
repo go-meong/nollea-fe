@@ -9,20 +9,35 @@ export interface IRecommendTour {
   title: string;
   coordinates: number[];
   serviceHours: string[];
+  reviews: string[];
+  description: string;
+  positiveRate: number;
+  negativeRate: number;
 }
 
 interface TourState {
+  recommendTour: IRecommendTour;
   recommendTours: IRecommendTour[];
 }
 
 interface TourAction {
+  setRecommendTour: (recommendTour: IRecommendTour) => void;
   setRecommendTours: (recommendTours: IRecommendTour[]) => void;
 }
 
 export const useTourStore = create<TourState & TourAction>()(
   devtools((set) => ({
-    recommendTours: [],
+    tourCoordinates: {
+      id: "",
+      categoryList: [],
+      fullAddress: "",
+      title: "",
+      coordinates: [],
+      serviceHours: [],
+    },
+    recommendTour: null,
 
+    setRecommendTour: (recommendTour) => set({ recommendTour }),
     setRecommendTours: (recommendTours) => set({ recommendTours }),
   }))
 );

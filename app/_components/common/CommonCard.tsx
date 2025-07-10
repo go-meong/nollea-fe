@@ -15,9 +15,10 @@ interface ICard {
   lat: number;
   lon: number;
   time: string[];
+  onClick?: () => void;
 }
 
-export default function CommonCard({ id, imgUrl, badges, title, location, lat, lon, time }: ICard) {
+export default function CommonCard({ id, imgUrl, badges, title, location, lat, lon, time, onClick }: ICard) {
   const router = useRouter();
   const [userLat, setUserLat] = useState<number | null>(null);
   const [userLon, setUserLon] = useState<number | null>(null);
@@ -34,6 +35,9 @@ export default function CommonCard({ id, imgUrl, badges, title, location, lat, l
   }, []);
 
   const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
     router.push(`/test/list/${id}`);
   };
 
