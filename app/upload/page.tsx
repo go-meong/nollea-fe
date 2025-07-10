@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@vapor-ui/core";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useUploadPicture, useUploadTour } from "../_hooks/useTourMutations";
 import Address from "./_components/Address";
@@ -22,10 +23,14 @@ export default function UploadPage() {
   const [image, setImage] = useState<string | null>(null);
   const [file, setFile] = useState<File | null>(null);
 
+  const [submit, setSubmit] = useState(false);
+
   const isDisabled = !placeName || !address || !postcode || !operatingHours || !category || !description || !image;
 
-  const { mutate: createTour, isPending: isCreating } = useUploadTour();
-  const { mutateAsync: uploadPicture, isPending: isUploading } = useUploadPicture();
+  const { mutate: createTour } = useUploadTour();
+  const { mutateAsync: uploadPicture } = useUploadPicture();
+
+  const router = useRouter();
 
   return (
     <div className="flex-1 relative">
@@ -47,32 +52,42 @@ export default function UploadPage() {
             width: "100%",
           }}
           onClick={async () => {
-            if (!file) return;
+            setSubmit(true);
+            if (!file) {
+              setSubmit(false);
+              return;
+            }
 
             const imageResponse = await uploadPicture(file);
 
-            console.log(imageResponse);
-
-            return;
-
-            createTour({
-              title: placeName,
-              fullAddress: address,
-              serviceHours: operatingHours,
-              categoryList: category.map((c) => c.value) as (
-                | "FOOD"
-                | "NIGHT_MARKET"
-                | "NATURE"
-                | "FESTIVAL"
-                | "WALKING_PATH"
-                | "NIGHT_VIEW"
-                | "ROMANTIC"
-              )[],
-              description,
-              imageId: imageResponse.data.id,
-            });
+            createTour(
+              {
+                title: placeName,
+                fullAddress: address,
+                serviceHours: operatingHours,
+                categoryList: category.map((c) => c.value) as (
+                  | "FOOD"
+                  | "NIGHT_MARKET"
+                  | "NATURE"
+                  | "FESTIVAL"
+                  | "WALKING_PATH"
+                  | "NIGHT_VIEW"
+                  | "ROMANTIC"
+                )[],
+                description,
+                imageId: imageResponse.data.id,
+              },
+              {
+                onSuccess: () => {
+                  router.push("/upload/done");
+                },
+                onError: () => {
+                  setSubmit(false);
+                },
+              }
+            );
           }}
-          disabled={isDisabled || isUploading || isCreating}
+          disabled={isDisabled || submit}
         >
           저장하기
         </Button>
