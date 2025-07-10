@@ -6,7 +6,6 @@ import { StarsBackground } from "@/components/ui/stars-background";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeProvider, ThemeScript } from "@vapor-ui/core";
 import type { Metadata } from "next";
-import Script from "next/script";
 import QueryClientProvider from "./QueryClientProvider";
 
 export const metadata: Metadata = {
@@ -22,10 +21,6 @@ export default function RootLayout({
   return (
     <html lang="ko" suppressHydrationWarning>
       <head suppressHydrationWarning>
-        <Script
-          type="text/javascript"
-          src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_API_KEY}&libraries=services,clusterer`}
-        ></Script>
         <ThemeScript config={themeConfig} />
       </head>
       <body
@@ -42,6 +37,11 @@ export default function RootLayout({
             <ReactQueryDevtools />
           </ThemeProvider>
         </QueryClientProvider>
+        {/* eslint-disable-next-line */}
+        <script
+          type="text/javascript"
+          src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_API_KEY}&libraries=services,clusterer`}
+        ></script>
       </body>
     </html>
   );

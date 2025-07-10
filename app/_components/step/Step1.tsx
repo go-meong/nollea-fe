@@ -43,7 +43,7 @@ export default function Step1({ goNext }: IStep1) {
         </RadioGroup.Root>
       </div>
 
-      <Button className="bg-[#ff6500] w-80 h-12" onClick={goNext} disabled={checked === -1}>
+      <Button className="bg-[#ff6500] h-12" stretch onClick={goNext} disabled={checked === -1}>
         다음
       </Button>
     </div>
