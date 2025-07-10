@@ -1,8 +1,14 @@
 import { Text, TextInput } from "@vapor-ui/core";
 
-export default function PlaceName() {
+export default function PlaceName({
+  placeName,
+  setPlaceName,
+}: {
+  placeName: string;
+  setPlaceName: (placeName: string) => void;
+}) {
   return (
-    <TextInput.Root type="text" size="md">
+    <TextInput.Root type="text" size="md" value={placeName} onValueChange={(value) => setPlaceName(value)}>
       <TextInput.Label>
         <Text
           typography="body2"

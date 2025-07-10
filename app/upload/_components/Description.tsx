@@ -1,6 +1,12 @@
 import { Textarea } from "@/components/ui/textfield";
 import { Text, TextInput } from "@vapor-ui/core";
-export default function Description() {
+export default function Description({
+  description,
+  setDescription,
+}: {
+  description: string;
+  setDescription: (description: string) => void;
+}) {
   return (
     <TextInput.Root type="text" size="md">
       <TextInput.Label>
@@ -14,6 +20,8 @@ export default function Description() {
         </Text>
       </TextInput.Label>
       <Textarea
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
         maxLength={50}
         className="w-full"
         style={{

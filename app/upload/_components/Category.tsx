@@ -14,71 +14,76 @@ type Category = Record<"value" | "label" | "id", string>;
 // 야시장, 음식점, 야경 명소, 산책길, 자연, 테마파크, 드라이브, 정원, 산책길, 유적지, 사찰, 공연, 유네스코 무형유산
 const FRAMEWORKS = [
   {
-    value: "야시장",
+    value: "NIGHT_MARKET",
     label: "야시장",
     id: uuidv4(),
   },
   {
-    value: "음식점",
+    value: "FOOD",
     label: "음식점",
     id: uuidv4(),
   },
   {
-    value: "야경 명소",
+    value: "NIGHT_VIEW",
     label: "야경 명소",
     id: uuidv4(),
   },
   {
-    value: "산책길",
+    value: "WALKING_PATH",
     label: "산책길",
     id: uuidv4(),
   },
   {
-    value: "자연",
+    value: "NATURE",
     label: "자연",
     id: uuidv4(),
   },
   {
-    value: "테마파크",
+    value: "FESTIVAL",
     label: "테마파크",
     id: uuidv4(),
   },
   {
-    value: "드라이브",
+    value: "ROMANTIC",
     label: "드라이브",
     id: uuidv4(),
   },
   {
-    value: "정원",
+    value: "NATURE",
     label: "정원",
     id: uuidv4(),
   },
   {
-    value: "유적지",
+    value: "WALKING_PATH",
     label: "유적지",
     id: uuidv4(),
   },
   {
-    value: "사찰",
+    value: "ROMANTIC",
     label: "사찰",
     id: uuidv4(),
   },
   {
-    value: "공연",
+    value: "FESTIVAL",
     label: "공연",
     id: uuidv4(),
   },
   {
-    value: "유네스코 무형유산",
+    value: "FESTIVAL",
     label: "유네스코 무형유산",
     id: uuidv4(),
   },
 ] satisfies Category[];
 
-export function Category() {
+export function Category({
+  category: selected,
+  setCategory: setSelected,
+}: {
+  category: Category[];
+  setCategory: React.Dispatch<React.SetStateAction<Category[]>>;
+}) {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [open, setOpen] = React.useState(false);
-  const [selected, setSelected] = React.useState<Category[]>([]);
   const [inputValue, setInputValue] = React.useState("");
 
   const handleUnselect = React.useCallback((framework: Category) => {

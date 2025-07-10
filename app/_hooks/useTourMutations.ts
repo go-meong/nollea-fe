@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { reviewTour } from "../_apis/reviewTour";
 import { uploadPicture } from "../_apis/uploadPicture";
 import { uploadTour } from "../_apis/uploadTour";
+import { ApiResponse } from "../_lib/http";
 
 type ReviewTourRequest = {
   id: string;
@@ -17,6 +18,14 @@ type UploadTourRequest = {
   categoryList: ("FOOD" | "NIGHT_MARKET" | "NATURE" | "FESTIVAL" | "WALKING_PATH" | "NIGHT_VIEW" | "ROMANTIC")[];
   description: string;
   imageId: string;
+};
+
+type UploadPictureResponse = {
+  id: string;
+  originalName: string;
+  contentType: string;
+  size: number;
+  base64: string;
 };
 
 // 투어 리뷰 작성
@@ -35,7 +44,7 @@ export const useReviewTour = () => {
 
 // 사진 업로드
 export const useUploadPicture = () => {
-  return useMutation({
+  return useMutation<ApiResponse<UploadPictureResponse>, Error, File>({
     mutationFn: (picture: File) => uploadPicture(picture),
   });
 };

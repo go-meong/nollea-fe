@@ -1,6 +1,13 @@
 import { ApiResponse, http } from "../_lib/http";
 
-export type TCategoryList = "FOOD" | "NIGHT_MARKET" | "NATURE" | "FESTIVAL" | "WALKING_PATH" | "NIGHT_VIEW" | "ROMANTIC";
+export type TCategoryList =
+  | "FOOD"
+  | "NIGHT_MARKET"
+  | "NATURE"
+  | "FESTIVAL"
+  | "WALKING_PATH"
+  | "NIGHT_VIEW"
+  | "ROMANTIC";
 
 type NightTour = {
   id: string;
@@ -11,6 +18,7 @@ type NightTour = {
   serviceHours: [string, string];
   description: string;
   imageUrl: string;
+  coordinates: [number, number];
 };
 
 export const getNightTour = async (id: string): Promise<ApiResponse<NightTour>> => {

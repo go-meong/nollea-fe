@@ -9,6 +9,7 @@ type NightTour = {
   serviceHours: [string, string];
   description: string;
   imageUrl: string;
+  coordinates: [number, number];
 };
 
 export const getNightTours = async (): Promise<ApiResponse<NightTour[]>> => {

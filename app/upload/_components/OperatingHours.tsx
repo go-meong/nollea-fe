@@ -2,7 +2,13 @@
 import { Input } from "@/components/ui/input";
 import { Text } from "@vapor-ui/core";
 
-export default function OperatingHours() {
+export default function OperatingHours({
+  operatingHours,
+  setOperatingHours,
+}: {
+  operatingHours: [string, string];
+  setOperatingHours: (operatingHours: [string, string]) => void;
+}) {
   return (
     <div className="flex gap-2">
       <div className="flex flex-col gap-3">
@@ -20,7 +26,8 @@ export default function OperatingHours() {
             type="time"
             id="time-picker"
             step="60000"
-            defaultValue="10:30"
+            value={operatingHours[0]}
+            onChange={(e) => setOperatingHours([e.target.value, operatingHours[1]])}
             className="appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none h-8"
             style={{
               backgroundColor: "var(--vapor-color-gray-900)",
@@ -41,7 +48,8 @@ export default function OperatingHours() {
             type="time"
             id="time-picker"
             step="60000"
-            defaultValue="10:30:00"
+            value={operatingHours[1]}
+            onChange={(e) => setOperatingHours([operatingHours[0], e.target.value])}
             className="appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none h-8"
             style={{
               backgroundColor: "var(--vapor-color-gray-900)",

@@ -2,10 +2,18 @@
 
 import { IconButton, Text } from "@vapor-ui/core";
 import { PlusOutlineIcon } from "@vapor-ui/icons";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
-export default function Image() {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+export default function ImageUploader({
+  image: selectedImage,
+  setImage: setSelectedImage,
+  setFile,
+}: {
+  image: string | null;
+  setImage: (image: string | null) => void;
+  file: File | null;
+  setFile: (file: File | null) => void;
+}) {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -16,6 +24,7 @@ export default function Image() {
         setSelectedImage(e.target?.result as string);
       };
       reader.readAsDataURL(file);
+      setFile(file);
     }
   };
 
