@@ -7,14 +7,14 @@ import { Drawer, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader } 
 import Image from "next/image";
 import CommonBadge from "@/app/_components/common/CommonBadge";
 import { useRouter } from "next/navigation";
-import TrafficBadge from "@/app/_components/common/TrafficBadge";
 import { Map } from "react-kakao-maps-sdk";
+import { useRecommendTour } from "@/app/_hooks";
 
 export default function Page({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter();
-
   const { id } = use(params);
-  console.log(id);
+
+  const { data } = useRecommendTour(id);
 
   const goBack = () => {
     router.back();
@@ -40,48 +40,34 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
           <div className="flex-1 mx-auto w-full px-4 overflow-y-auto scrollbar-none mb-25">
             <DrawerHeader className="">
               <div className="flex gap-2">
-                <CommonBadge type="음식점" />
-                <CommonBadge type="야시장" />
+                <CommonBadge type="FOOD" />
+                <CommonBadge type="NIGHT_MARKET" />
               </div>
               <Text typography="heading2" className="text-start">
-                제주 수목원길 야시장
+                {data?.data.title}
               </Text>
               <DrawerDescription className="flex flex-col gap-2">
                 <Text typography="subtitle1" className="mb-4 text-start">
-                  제주특별자치도 제주시 특별자치도 은수길 69
+                  {data?.data.fullAddress}
                 </Text>
                 <div className="flex">
                   <Text typography="subtitle1" className="mr-4">
                     운영 시간
                   </Text>
-                  <Text typography="subtitle1">운영 시간</Text>
+                  <Text typography="subtitle1">{data?.data.serviceHours.join(" ")}</Text>
                 </div>
                 <div className="flex">
-                  <Text typography="subtitle1" className="mr-4">
+                  <Text className="min-w-[51px] mr-4" typography="subtitle1">
                     한줄 설명
                   </Text>
-                  <Text typography="subtitle1">운영 시간</Text>
+                  <Text className="text-left whitespace-pre-line" typography="subtitle1">
+                    {data?.data.description}
+                  </Text>
                 </div>
 
                 {/* 지도 */}
                 <div className="my-8">
                   <Map center={{ lat: 33.5563, lng: 126.79581 }} style={{ width: "100%", height: "145px" }}></Map>
-                </div>
-
-                {/* 혼잡도 */}
-                <div className="flex">
-                  <Text typography="subtitle1" className="mr-8">
-                    혼잡도
-                  </Text>
-                  <TrafficBadge type="여유" />
-                </div>
-
-                {/* 버스 막차 */}
-                <div className="flex">
-                  <Text typography="subtitle1" className="mr-4">
-                    버스 막차
-                  </Text>
-                  <Text typography="subtitle1">운영 시간</Text>
                 </div>
 
                 {/* 리뷰 */}
@@ -94,15 +80,15 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                   <div className="flex items-center gap-1">
                     <LikeThumbIcon />
                     <Text typography="subtitle1" className="mr-4">
-                      80%
+                      {data?.data.positiveRate}%
                     </Text>
                     <DislikeThumbIcon />
-                    <Text typography="subtitle1">20%</Text>
+                    <Text typography="subtitle1">{data?.data.negativeRate}%</Text>
                   </div>
                 </div>
                 {/* 리뷰 comment */}
                 <div className="flex flex-col ml-18 mt-3 gap-3">
-                  {["이런 야시장이 있는줄 몰랐는데 최고였어요!", "밤이 이렇게 맛있을 수가 있나요", "먹고 또 먹고 이야 최고다"].map((comment) => (
+                  {data?.data.reviews.map((comment) => (
                     <div
                       key={comment}
                       className="text-start rounded-t-xl rounded-l-xl px-4 py-2 text-black"
