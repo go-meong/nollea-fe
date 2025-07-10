@@ -9,7 +9,7 @@ export default function UploadButton() {
   };
 
   return (
-    <div className="fixed bottom-[54px] right-6">
+    <div className="fixed bottom-[12px] right-[12px]">
       <IconButton
         aria-label="제주 명소 등록"
         size="lg"
