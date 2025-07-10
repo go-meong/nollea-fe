@@ -1,7 +1,7 @@
 "use client";
 
 import { IconButton, Text } from "@vapor-ui/core";
-import { PlusOutlineIcon, XIcon } from "@vapor-ui/icons";
+import { PlusOutlineIcon } from "@vapor-ui/icons";
 import { useRef, useState } from "react";
 
 export default function Image() {
@@ -21,14 +21,6 @@ export default function Image() {
 
   const handleButtonClick = () => {
     fileInputRef.current?.click();
-  };
-
-  const handleRemoveImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setSelectedImage(null);
-    if (fileInputRef.current) {
-      fileInputRef.current.value = "";
-    }
   };
 
   return (
@@ -68,15 +60,6 @@ export default function Image() {
               />
             )}
           </IconButton>
-          {selectedImage && (
-            <button
-              onClick={handleRemoveImage}
-              className="absolute -top-1 -right-1 bg-red-500 hover:bg-red-600 text-white rounded-full p-1 shadow-lg transition-colors z-10"
-              aria-label="이미지 제거"
-            >
-              <XIcon className="w-3 h-3" />
-            </button>
-          )}
         </div>
         <input ref={fileInputRef} type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
       </div>
