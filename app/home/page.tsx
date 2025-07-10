@@ -4,7 +4,7 @@ import { Nav } from "@vapor-ui/core";
 import Image from "next/image";
 export default function Page() {
   return (
-    <div className="w-full flex flex-col justify-between h-full mt-20">
+    <div className="w-full flex-1 flex flex-col justify-between h-full mt-20">
       {/* star image */}
       <div className="flex justify-center items-center">
         <Image src="/star2.png" width={258} height={73} alt="star2" />
