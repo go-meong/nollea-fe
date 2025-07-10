@@ -3,6 +3,7 @@
 import CommonCard from "../_components/common/CommonCard";
 import { useNightTours } from "../_hooks";
 import Header from "./_components/Header";
+import UploadButton from "./_components/UploadButton";
 
 export default function Page() {
   const { data: nightTours } = useNightTours();
@@ -25,6 +26,7 @@ export default function Page() {
           />
         ))}
       </div>
+      <UploadButton />
     </div>
   );
 }
