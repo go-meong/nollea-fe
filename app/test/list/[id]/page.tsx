@@ -1,6 +1,6 @@
 "use client";
 
-import CommonBadge from "@/app/_components/common/CommonBadge";
+import CommonBadge from "@/app/_components/CommonBadge";
 import { useTourStore } from "@/app/_store/useTourStore";
 import { Drawer, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader } from "@/components/ui/drawer";
 import { Button, Text } from "@vapor-ui/core";

@@ -4,7 +4,7 @@ import { Text } from "@vapor-ui/core";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import CommonBadge from "./CommonBadge";
+import CommonBadge from "../CommonBadge";
 
 interface ICard {
   id: string;
