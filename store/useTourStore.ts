@@ -7,11 +7,13 @@ export interface IRecommendTour {
   categoryList: TCategoryList[];
   fullAddress: string;
   title: string;
+  description: string;
+  recommendReason: string;
   reviews: string[];
   reviewRatios: number[];
   coordinates: number[];
-  description: string;
   serviceHours: string[];
+  imageUrl: string;
 }
 
 interface TourState {

@@ -1,8 +1,19 @@
 "use client";
 
+import { useSelectStore } from "@/store/useSelectStore";
 import { Nav } from "@vapor-ui/core";
 import Image from "next/image";
+import { useEffect } from "react";
 export default function Page() {
+  const { setJoin, setVehicle, setMood, setActivity } = useSelectStore();
+
+  useEffect(() => {
+    setJoin(null);
+    setVehicle(null);
+    setMood(null);
+    setActivity(null);
+  }, []);
+
   return (
     <div className="w-full flex-1 flex flex-col justify-between h-full mt-20">
       {/* star image */}

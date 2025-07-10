@@ -14,7 +14,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter();
   const { id } = use(params);
   const { recommendTour } = useTourStore();
-  const { title, fullAddress, description, serviceHours, coordinates, reviewRatios, reviews } = recommendTour;
+  const { title, fullAddress, imageUrl, description, recommendReason, serviceHours, coordinates, reviewRatios, reviews } = recommendTour;
 
   const goBack = () => {
     router.back();
@@ -27,15 +27,15 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
   return (
     <div className="w-[100%] h-full flex flex-col justify-between">
       {/* cancel button */}
-      <div onClick={goBack} className="fixed z-999 top-8 right-8 rounded-4xl bg-white w-[24px] h-[24px] hover:cursor-pointer">
+      <div onClick={goBack} className="absolute z-999 top-8 right-8 rounded-4xl bg-white w-[24px] h-[24px] hover:cursor-pointer">
         <div className="w-full h-full flex justify-center items-center">
           <CloseOutlineIcon />
         </div>
       </div>
 
       {/* background-image */}
-      <div className="fixed top-0 w-[100%] h-[250px]">
-        <Image src="/ex-img.png" alt="img" layout="fill" objectFit="cover" />
+      <div className="absolute left-0 top-0 w-[100%] max-w-[600px] h-[250px]">
+        <Image src={imageUrl} alt="img" layout="fill" objectFit="cover" />
       </div>
 
       <Drawer open fixed>
@@ -63,9 +63,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                   <Text className="min-w-[52px] mr-4" typography="subtitle1">
                     한줄 설명
                   </Text>
-                  <Text className="text-left whitespace-pre-line" typography="subtitle1">
-                    {description}
-                  </Text>
+                  <Text typography="subtitle1">{description}</Text>
                 </div>
 
                 {/* 지도 */}
@@ -74,6 +72,16 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                     <Map center={{ lat: coordinates[0], lng: coordinates[1] }} style={{ width: "100%", height: "145px" }}></Map>
                   </div>
                 )}
+
+                {/* AI 추천 이유 */}
+                <div className="flex flex-col">
+                  <Text className="text-start font-bold" typography="subtitle1">
+                    AI 추천 이유
+                  </Text>
+                  <Text className="text-left whitespace-pre-line" typography="subtitle1">
+                    {recommendReason}
+                  </Text>
+                </div>
 
                 {/* 리뷰 */}
                 <div className="flex">

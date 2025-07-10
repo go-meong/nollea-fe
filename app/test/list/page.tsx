@@ -19,8 +19,6 @@ export default function Page() {
     activity: activity as string,
   });
 
-  console.log(join, vehicle, mood, activity);
-
   if (isLoading) return <Loading />;
 
   console.log(data);
@@ -49,7 +47,7 @@ export default function Page() {
               <CommonCard
                 key={tour.title}
                 id={tour.id}
-                imgUrl="/ex-img.png"
+                imgUrl={tour.imageUrl}
                 badges={tour.categoryList}
                 title={tour.title}
                 location={tour.fullAddress}
