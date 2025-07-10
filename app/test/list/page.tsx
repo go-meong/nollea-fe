@@ -3,26 +3,10 @@
 import CommonCard from "@/app/_components/common/CommonCard";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 import { Text } from "@vapor-ui/core";
-import { useEffect, useState } from "react";
 import { useTourStore } from "@/store/useTourStore";
 
 export default function Page() {
-  const [userLat, setUserLat] = useState<number | null>(null);
-  const [userLon, setUserLon] = useState<number | null>(null);
   const { recommendTours } = useTourStore();
-
-  console.log(recommendTours);
-
-  useEffect(() => {
-    if (!navigator) return;
-
-    navigator.geolocation.getCurrentPosition((position) => {
-      const lat = position.coords.latitude;
-      setUserLat(lat);
-      const lon = position.coords.longitude;
-      setUserLon(lon);
-    });
-  }, []);
 
   return (
     <>
@@ -53,8 +37,6 @@ export default function Page() {
                 title={tour.title}
                 location={tour.fullAddress}
                 time={tour.serviceHours}
-                userLat={userLat}
-                userLon={userLon}
                 lat={tour.coordinates[0]}
                 lon={tour.coordinates[1]}
               />
