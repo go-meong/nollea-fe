@@ -47,7 +47,7 @@ export default function CommonCard({ id, imgUrl, badges, title, location, lat, l
         <Image src={imgUrl} alt="img" layout="fill" objectFit="cover" className="rounded-sm" />
       </div>
       <div className="flex flex-col min-w-0">
-        <div className="flex gap-2">
+        <div className="flex gap-2 mb-2">
           {badges.map((badge, index) => (
             <CommonBadge key={`${badge}${index}`} type={badge} />
           ))}
@@ -55,7 +55,9 @@ export default function CommonCard({ id, imgUrl, badges, title, location, lat, l
         <Text typography="heading5" className="truncate whitespace-nowrap overflow-hidden text-ellipsis">
           {title}
         </Text>
-        <Text typography="body4">{location}</Text>
+        <Text typography="body4" className="mb-2">
+          {location}
+        </Text>
         {userLat && userLon && <Text typography="body3">거리: {getDistance(userLat, userLon, lat, lon)}km</Text>}
         <Text typography="body3">
           운영시간: {time[0]} ~ {time[1]}

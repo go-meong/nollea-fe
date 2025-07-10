@@ -7,22 +7,21 @@ export interface IRecommendTour {
   categoryList: TCategoryList[];
   fullAddress: string;
   title: string;
-  coordinates: number[];
-  serviceHours: string[];
   reviews: string[];
+  reviewRatios: number[];
+  coordinates: number[];
   description: string;
-  positiveRate: number;
-  negativeRate: number;
+  serviceHours: string[];
 }
 
 interface TourState {
   recommendTour: IRecommendTour;
-  recommendTours: IRecommendTour[];
+  // recommendTours: IRecommendTour[];
 }
 
 interface TourAction {
   setRecommendTour: (recommendTour: IRecommendTour) => void;
-  setRecommendTours: (recommendTours: IRecommendTour[]) => void;
+  // setRecommendTours: (recommendTours: IRecommendTour[]) => void;
 }
 
 export const useTourStore = create<TourState & TourAction>()(
@@ -38,6 +37,6 @@ export const useTourStore = create<TourState & TourAction>()(
     recommendTour: null,
 
     setRecommendTour: (recommendTour) => set({ recommendTour }),
-    setRecommendTours: (recommendTours) => set({ recommendTours }),
+    // setRecommendTours: (recommendTours) => set({ recommendTours }),
   }))
 );

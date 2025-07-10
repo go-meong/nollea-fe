@@ -2,17 +2,22 @@ import { Button, IconButton, RadioGroup, Text } from "@vapor-ui/core";
 import { BackPageOutlineIcon } from "@vapor-ui/icons";
 import CheckButton from "./CheckButton";
 import { TActivity, useSelectStore } from "@/store/useSelectStore";
+import { useRouter } from "next/navigation";
 
 interface IStep4 {
   goBack: () => void;
-  goNext: () => void;
 }
 
-export default function Step4({ goBack, goNext }: IStep4) {
+export default function Step4({ goBack }: IStep4) {
+  const router = useRouter();
   const { activity, setActivity } = useSelectStore();
 
   const handleClick = (item: string) => {
     setActivity(item as TActivity);
+  };
+
+  const goNext = () => {
+    router.push("/test/list");
   };
 
   const itemArray = ["산책", "공연", "맛집", "체험"];

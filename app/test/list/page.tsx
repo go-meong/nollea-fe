@@ -4,21 +4,38 @@ import CommonCard from "@/app/_components/common/CommonCard";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 import { Text } from "@vapor-ui/core";
 import { IRecommendTour, useTourStore } from "@/store/useTourStore";
+import { useSelectStore } from "@/store/useSelectStore";
+import { useRecommendTours } from "@/app/_hooks";
+import Loading from "@/app/_components/step/Loading";
 
 export default function Page() {
-  const { setRecommendTour, recommendTours } = useTourStore();
+  const { join, vehicle, mood, activity } = useSelectStore();
+  const { setRecommendTour } = useTourStore();
+
+  const { data, isLoading } = useRecommendTours({
+    companionType: join as string,
+    travelMethod: vehicle as string,
+    placeMood: mood as string,
+    activity: activity as string,
+  });
+
+  console.log(join, vehicle, mood, activity);
 
   const handleClick = (tour: IRecommendTour) => {
     setRecommendTour(tour);
   };
+
+  if (isLoading) return <Loading />;
+
+  console.log(data);
 
   return (
     <>
       {/* 지도 */}
       <div className="fixed top-0 w-full max-w-[600px]">
         <Map center={{ lat: 393494.9999999985, lng: 32197.9999999993 }} style={{ width: "100%", height: "400px" }}>
-          {recommendTours.map((recommendTour) => (
-            <MapMarker key={recommendTour.title} position={{ lat: recommendTour.coordinates[0], lng: recommendTour.coordinates[1] }}>
+          {data?.data.map((tour) => (
+            <MapMarker key={tour.title} position={{ lat: tour.coordinates[0], lng: tour.coordinates[1] }}>
               <div style={{ color: "#000" }}>Hello World!</div>
             </MapMarker>
           ))}
@@ -32,7 +49,7 @@ export default function Page() {
             특별한 제주의 밤을 즐겨보세요!
           </Text>
           <div className="flex flex-col gap-3 px-3">
-            {recommendTours.map((tour) => (
+            {data?.data.map((tour) => (
               <CommonCard
                 key={tour.title}
                 id={tour.id}
