@@ -1,5 +1,5 @@
-import { Button, RadioGroup, Text } from "@vapor-ui/core";
-import Image from "next/image";
+import { Button, IconButton, RadioGroup, Text } from "@vapor-ui/core";
+import { BackPageOutlineIcon } from "@vapor-ui/icons";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import CheckButton from "./CheckButton";
@@ -22,14 +22,16 @@ export default function Step1({ goNext }: IStep1) {
     <div className="flex flex-col flex-1 items-center justify-between">
       <div>
         {/* 뒤로 가기 */}
-        <Image
+        <IconButton
           onClick={() => router.back()}
-          className="hover:cursor-pointer"
-          src="/back-icon.png"
-          width={30}
-          height={30}
-          alt="back"
-        />
+          size="xl"
+          color="primary"
+          variant="ghost"
+          shape="square"
+          aria-label="뒤로가기?"
+        >
+          <BackPageOutlineIcon color="#525463" width={18} height={18} />
+        </IconButton>
 
         {/* 상단 텍스트 */}
         <div className="mt-4 mb-14">
