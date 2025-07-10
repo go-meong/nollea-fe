@@ -37,7 +37,14 @@ const badgeBackgroundColor = {
 
 export default function CommonBadge({ type }: ICommonBadge) {
   return (
-    <Badge className={`bg-[${badgeBackgroundColor[type]}] text-[${badgeColor[type]}]`} size="md" shape="pill">
+    <Badge
+      style={{
+        backgroundColor: badgeBackgroundColor[type],
+        color: badgeColor[type],
+      }}
+      size="md"
+      shape="pill"
+    >
       {badgeText[type]}
     </Badge>
   );
