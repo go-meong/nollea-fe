@@ -1,5 +1,5 @@
-import Postcode from "@/app/_components/Postcode";
+import UploadingSpotPage from "../_components/UploadingSpotPage";
 
 export default function Page() {
-  return <Postcode />;
+  return <UploadingSpotPage />;
 }
