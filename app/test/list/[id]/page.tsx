@@ -35,8 +35,9 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
       <div className="relative w-[100%] h-[250px]">
         <Image src="/ex-img.png" alt="img" layout="fill" objectFit="cover" />
       </div>
+
       <Drawer open>
-        <DrawerContent className="h-[80%]">
+        <DrawerContent className="h-[80%] w-screen max-w-[600px] mx-auto">
           <div className="mx-auto w-full px-4 overflow-y-auto scrollbar-none mb-25">
             <DrawerHeader className="">
               <div className="flex gap-2">
