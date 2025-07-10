@@ -20,7 +20,7 @@ export default function Header() {
         shape="square"
         aria-label="뒤로 가기"
       >
-        <BackPageOutlineIcon color="#525463" />
+        <BackPageOutlineIcon color="#525463" width={18} height={18} />
       </IconButton>
       <Text
         typography="heading3"
