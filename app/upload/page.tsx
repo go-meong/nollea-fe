@@ -1,6 +1,7 @@
 "use client";
 import { http } from "@/app/_lib/http";
 import { Button } from "@vapor-ui/core";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import Postcode from "./_components/Address";
 import { Category } from "./_components/Category";
@@ -11,6 +12,8 @@ import OperatingHours from "./_components/OperatingHours";
 import PlaceName from "./_components/PlaceName";
 
 export default function UploadPage() {
+  const router = useRouter();
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await http.get("/");
@@ -39,7 +42,7 @@ export default function UploadPage() {
             width: "100%",
           }}
           onClick={() => {
-            alert("hi");
+            router.push("/upload/done");
           }}
         >
           저장하기
