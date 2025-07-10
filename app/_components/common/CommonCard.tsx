@@ -41,6 +41,16 @@ export default function CommonCard({ id, imgUrl, badges, title, location, lat, l
     router.push(`/test/list/${id}`);
   };
 
+  const getHour = () => {
+    if (!(time[0] && time[1])) {
+      return time[2];
+    }
+    if (time[2]) {
+      return `${time[0]} ~ ${time[1]} (${time[2]})`;
+    }
+    return `${time[0]} ~ ${time[1]}`;
+  };
+
   return (
     <div className="flex w-full gap-4 bg-white p-4 rounded-sm hover:cursor-pointer" onClick={handleClick}>
       <div className="relative w-[108px] h-[108px] shrink-0">
@@ -59,9 +69,7 @@ export default function CommonCard({ id, imgUrl, badges, title, location, lat, l
           {location}
         </Text>
         {userLat && userLon && <Text typography="body3">거리: {getDistance(userLat, userLon, lat, lon).toFixed(1)}km</Text>}
-        <Text typography="body3">
-          운영시간: {time[0]} ~ {time[1]}
-        </Text>
+        <Text typography="body3">운영시간: {getHour()}</Text>
       </div>
     </div>
   );

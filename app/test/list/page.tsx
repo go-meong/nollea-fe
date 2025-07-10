@@ -21,17 +21,13 @@ export default function Page() {
 
   if (isLoading) return <Loading />;
 
-  console.log(data);
-
   return (
     <>
       {/* 지도 */}
       <div className="fixed top-0 w-full max-w-[600px]">
-        <Map center={{ lat: 393494.9999999985, lng: 32197.9999999993 }} style={{ width: "100%", height: "400px" }}>
+        <Map level={10} center={{ lat: 33.36167, lng: 126.52917 }} style={{ width: "100%", height: "400px" }}>
           {data?.data.map((tour) => (
-            <MapMarker key={tour.title} position={{ lat: tour.coordinates[0], lng: tour.coordinates[1] }}>
-              <div style={{ color: "#000" }}>Hello World!</div>
-            </MapMarker>
+            <MapMarker key={tour.title} position={{ lat: tour.coordinates[0], lng: tour.coordinates[1] }}></MapMarker>
           ))}
         </Map>
       </div>
@@ -45,7 +41,7 @@ export default function Page() {
           <div className="flex flex-col gap-3 px-3">
             {data?.data.map((tour: IRecommendTour) => (
               <CommonCard
-                key={tour.title}
+                key={tour.id}
                 id={tour.id}
                 imgUrl={tour.imageUrl}
                 badges={tour.categoryList}
