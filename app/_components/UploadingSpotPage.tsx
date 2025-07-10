@@ -1,4 +1,4 @@
-import { ImageUploader } from "./ImageUploader";
+// import { ImageUploader } from "./ImageUploader";
 import { MultiSelect } from "./MultiSelect";
 import Postcode from "./Postcode";
 import TimePicker from "./TimePicker";
@@ -9,7 +9,7 @@ export default function UploadingSpotPage() {
       <Postcode />
       <TimePicker />
       <MultiSelect />
-      <ImageUploader />
+      {/* <ImageUploader /> */}
     </div>
   );
 }
