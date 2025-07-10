@@ -10,7 +10,7 @@ export default function Page() {
   return (
     <div className="flex-1 relative">
       <Header />
-      <div className="flex-1 flex flex-col mt-14 gap-5">
+      <div className="flex-1 flex flex-col py-14 gap-5 px-6">
         {nightTours.data.map((tour) => (
           <CommonCard
             key={tour.id}
