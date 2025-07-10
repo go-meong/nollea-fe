@@ -1,4 +1,4 @@
-import StepPage from "./components/StepPage";
+import StepPage from "./_components/StepPage";
 import { pretendard } from "./font";
 
 export default function Home() {
