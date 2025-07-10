@@ -161,6 +161,7 @@ export function Category() {
               onBlur={() => setOpen(false)}
               onFocus={() => setOpen(true)}
               className="ml-2 flex-1 bg-transparent outline-none placeholder:text-muted-foreground"
+              placeholder="카테고리를 선택해주세요."
             />
           </div>
         </div>

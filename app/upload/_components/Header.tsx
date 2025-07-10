@@ -6,7 +6,12 @@ export default function Header() {
   const router = useRouter();
 
   return (
-    <div className="flex items-center gap-2 justify-between sticky px-6">
+    <div
+      className="flex items-center gap-2 justify-between sticky px-6 py-4 top-0 z-10"
+      style={{
+        backgroundColor: "var(--vapor-color-black)",
+      }}
+    >
       <IconButton
         onClick={() => router.back()}
         size="xl"

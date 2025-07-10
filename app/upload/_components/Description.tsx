@@ -1,5 +1,5 @@
+import { Textarea } from "@/components/ui/textfield";
 import { Text, TextInput } from "@vapor-ui/core";
-
 export default function Description() {
   return (
     <TextInput.Root type="text" size="md">
@@ -13,10 +13,11 @@ export default function Description() {
           한줄 설명 (50자 이내)
         </Text>
       </TextInput.Label>
-      <TextInput.Field
-        maxLength={20}
+      <Textarea
+        maxLength={50}
         className="w-full"
         style={{
+          outline: "none",
           backgroundColor: "var(--vapor-color-gray-900)",
           borderColor: "var(--vapor-color-gray-900)",
           color: "var(--vapor-color-white)",

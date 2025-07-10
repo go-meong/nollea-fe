@@ -1,122 +1,85 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { ImagePlus } from "lucide-react";
-import React from "react";
-import { useDropzone } from "react-dropzone";
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
-import { z } from "zod";
 
-const ImageUploader: React.FC = () => {
-  const [preview, setPreview] = React.useState<string | ArrayBuffer | null>("");
+import { IconButton, Text } from "@vapor-ui/core";
+import { PlusOutlineIcon, XIcon } from "@vapor-ui/icons";
+import { useRef, useState } from "react";
 
-  const formSchema = z.object({
-    image: z
-      //Rest of validations done via react dropzone
-      .instanceof(File)
-      .refine((file) => file.size !== 0, "Please upload an image"),
-  });
+export default function Image() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    mode: "onBlur",
-    defaultValues: {
-      image: new File([""], "filename"),
-    },
-  });
-
-  const onDrop = React.useCallback(
-    (acceptedFiles: File[]) => {
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
       const reader = new FileReader();
-      try {
-        reader.onload = () => setPreview(reader.result);
-        reader.readAsDataURL(acceptedFiles[0]);
-        form.setValue("image", acceptedFiles[0]);
-        form.clearErrors("image");
-      } catch (error) {
-        console.error(error);
-        setPreview(null);
-        form.resetField("image");
-      }
-    },
-    [form]
-  );
+      reader.onload = (e) => {
+        setSelectedImage(e.target?.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
-  const { getRootProps, getInputProps, isDragActive, fileRejections } = useDropzone({
-    onDrop,
-    maxFiles: 1,
-    maxSize: 1000000,
-    accept: { "image/png": [], "image/jpg": [], "image/jpeg": [] },
-  });
+  const handleButtonClick = () => {
+    fileInputRef.current?.click();
+  };
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
-    toast.success(`Image uploaded successfully 🎉 ${values.image.name}`);
+  const handleRemoveImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setSelectedImage(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
   };
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-        <FormField
-          control={form.control}
-          name="image"
-          render={() => (
-            <FormItem className="mx-auto md:w-1/2">
-              <FormLabel className={`${fileRejections.length !== 0 && "text-destructive"}`}>
-                <h2 className="text-xl font-semibold tracking-tight">
-                  Upload your image
-                  <span
-                    className={
-                      form.formState.errors.image || fileRejections.length !== 0
-                        ? "text-destructive"
-                        : "text-muted-foreground"
-                    }
-                  ></span>
-                </h2>
-              </FormLabel>
-              <FormControl>
-                <div
-                  {...getRootProps()}
-                  className="mx-auto flex cursor-pointer flex-col items-center justify-center gap-y-2 rounded-lg border border-foreground p-8 shadow-sm shadow-foreground"
-                >
-                  {preview && <img src={preview as string} alt="Uploaded image" className="max-h-[400px] rounded-lg" />}
-                  <ImagePlus className={`size-40 ${preview ? "hidden" : "block"}`} />
-                  <Input {...getInputProps()} type="file" />
-                  {isDragActive ? <p>Drop the image!</p> : <p>Click here or drag an image to upload it</p>}
-                </div>
-              </FormControl>
-              <FormMessage>
-                {fileRejections.length !== 0 && <p>Image must be less than 1MB and of type png, jpg, or jpeg</p>}
-              </FormMessage>
-            </FormItem>
-          )}
-        />
-        <Button
-          type="submit"
-          disabled={form.formState.isSubmitting}
-          className="mx-auto block h-auto rounded-lg px-8 py-3 text-xl"
-        >
-          Submit
-        </Button>
-      </form>
-    </Form>
-  );
-};
-export default ImageUploader;
+    <div className="flex flex-col items-start gap-2">
+      <Text
+        typography="body2"
+        style={{
+          color: "var(--vapor-color-white)",
+        }}
+      >
+        사진 첨부
+      </Text>
+      {/* 업로드 버튼 */}
+      <div className="flex gap-2">
+        <div className="relative">
+          <IconButton
+            aria-label="이미지 추가"
+            size="xl"
+            color="primary"
+            variant="ghost"
+            shape="square"
+            onClick={handleButtonClick}
+            style={{
+              position: "relative",
+              overflow: "hidden",
 
-/**
- *
- * {preview && (
-   <Image
-     src={preview as string}
-     alt="Uploaded image"
-     className="rounded-lg object-contain"
-     width={400}
-     height={300}
-     layout="intrinsic"
-   />
- )}
- */
+              backgroundColor: "var(--vapor-color-gray-900)",
+            }}
+          >
+            {selectedImage ? (
+              <img src={selectedImage} alt="선택된 이미지" className="absolute inset-0 w-full h-full object-cover" />
+            ) : (
+              <PlusOutlineIcon
+                style={{
+                  color: "var(--vapor-color-white)",
+                }}
+              />
+            )}
+          </IconButton>
+          {selectedImage && (
+            <button
+              onClick={handleRemoveImage}
+              className="absolute -top-1 -right-1 bg-red-500 hover:bg-red-600 text-white rounded-full p-1 shadow-lg transition-colors z-10"
+              aria-label="이미지 제거"
+            >
+              <XIcon className="w-3 h-3" />
+            </button>
+          )}
+        </div>
+        <input ref={fileInputRef} type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
+      </div>
+    </div>
+  );
+}
