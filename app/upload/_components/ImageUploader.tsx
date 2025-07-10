@@ -106,3 +106,17 @@ const ImageUploader: React.FC = () => {
   );
 };
 export default ImageUploader;
+
+/**
+ *
+ * {preview && (
+   <Image
+     src={preview as string}
+     alt="Uploaded image"
+     className="rounded-lg object-contain"
+     width={400}
+     height={300}
+     layout="intrinsic"
+   />
+ )}
+ */
