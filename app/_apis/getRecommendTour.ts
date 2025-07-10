@@ -8,8 +8,8 @@ type RecommendTour = {
   description: string;
   congestionLevel: string;
   lastBusInfo: string;
-  positiveInfo: number;
-  negativeInfo: number;
+  positiveRate: number;
+  negativeRate: number;
   reviews: string[];
   imageUrl: string;
 };
