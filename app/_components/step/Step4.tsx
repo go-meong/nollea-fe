@@ -1,4 +1,4 @@
-import { Button, Text } from "@vapor-ui/core";
+import { Button, RadioGroup, Text } from "@vapor-ui/core";
 import CheckButton from "./CheckButton";
 import { useState } from "react";
 import Image from "next/image";
@@ -31,11 +31,15 @@ export default function Step4({ goBack, goNext }: IStep4) {
           </Text>
         </div>
 
-        <div className="flex flex-wrap gap-2 justify-center">
-          {itemArray.map((item, index) => (
-            <CheckButton key={item} text={item} onClick={handleClick} checked={checked === index} index={index} />
-          ))}
-        </div>
+        <RadioGroup.Root name="activity">
+          <div className="flex flex-wrap gap-2 justify-center">
+            {itemArray.map((item, index) => (
+              <RadioGroup.Item value={item} key={item}>
+                <CheckButton key={item} text={item} onClick={handleClick} checked={checked === index} index={index} />
+              </RadioGroup.Item>
+            ))}
+          </div>
+        </RadioGroup.Root>
       </div>
 
       <Button className="bg-[#ff6500] w-80 h-12" onClick={goNext} disabled={checked === -1}>
