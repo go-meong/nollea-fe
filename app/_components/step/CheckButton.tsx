@@ -3,19 +3,18 @@ import clsx from "clsx";
 
 interface ICheckButton {
   text: string;
-  onClick: (index: number) => void;
+  onClick: (text: string) => void;
   checked?: boolean;
-  index: number;
 }
 
-export default function CheckButton({ text, onClick, checked, index }: ICheckButton) {
+export default function CheckButton({ text, onClick, checked }: ICheckButton) {
   return (
     <Button
       className={clsx(
         "h-30 w-65 border text-[18px] hover:text-[#ff6500] hover:border-[#ff6500]",
         checked ? "font-extrabold bg-[#140700] text-[#ff6500]" : "bg-[#131313] border-[#6C6E7E]"
       )}
-      onClick={() => onClick(index)}
+      onClick={() => onClick(text)}
     >
       {text}
     </Button>

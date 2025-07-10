@@ -17,6 +17,8 @@ type RecommendTour = {
 };
 
 export const getRecommendTours = async (request: Request): Promise<ApiResponse<RecommendTour[]>> => {
-  const response = await http.post("/api/v1/recommend-tour", request);
+  const response = await http.get("/api/v1/recommend-tour", {
+    params: request,
+  });
   return response.data;
 };
