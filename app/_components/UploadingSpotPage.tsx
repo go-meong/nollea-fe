@@ -1,3 +1,4 @@
+import { ImageUploader } from "./ImageUploader";
 import { MultiSelect } from "./MultiSelect";
 import Postcode from "./Postcode";
 import TimePicker from "./TimePicker";
@@ -11,6 +12,8 @@ export default function UploadingSpotPage() {
       <TimePicker />
       asd
       <MultiSelect />
+      asd
+      <ImageUploader />
     </div>
   );
 }

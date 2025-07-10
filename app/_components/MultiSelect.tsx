@@ -9,38 +9,55 @@ import { Command as CommandPrimitive } from "cmdk";
 
 type Framework = Record<"value" | "label", string>;
 
+// 야시장, 음식점, 야경 명소, 산책길, 자연, 테마파크, 드라이브, 정원, 산책길, 유적지, 사찰, 공연, 유네스코 무형유산
 const FRAMEWORKS = [
   {
-    value: "next.js",
-    label: "Next.js",
+    value: "야시장",
+    label: "야시장",
   },
   {
-    value: "sveltekit",
-    label: "SvelteKit",
+    value: "음식점",
+    label: "음식점",
   },
   {
-    value: "nuxt.js",
-    label: "Nuxt.js",
+    value: "야경 명소",
+    label: "야경 명소",
   },
   {
-    value: "remix",
-    label: "Remix",
+    value: "산책길",
+    label: "산책길",
   },
   {
-    value: "astro",
-    label: "Astro",
+    value: "자연",
+    label: "자연",
   },
   {
-    value: "wordpress",
-    label: "WordPress",
+    value: "테마파크",
+    label: "테마파크",
   },
   {
-    value: "express.js",
-    label: "Express.js",
+    value: "드라이브",
+    label: "드라이브",
   },
   {
-    value: "nest.js",
-    label: "Nest.js",
+    value: "정원",
+    label: "정원",
+  },
+  {
+    value: "유적지",
+    label: "유적지",
+  },
+  {
+    value: "사찰",
+    label: "사찰",
+  },
+  {
+    value: "공연",
+    label: "공연",
+  },
+  {
+    value: "유네스코 무형유산",
+    label: "유네스코 무형유산",
   },
 ] satisfies Framework[];
 
@@ -110,7 +127,7 @@ export function MultiSelect() {
             onValueChange={setInputValue}
             onBlur={() => setOpen(false)}
             onFocus={() => setOpen(true)}
-            placeholder="Select frameworks..."
+            placeholder="카테고리를 선택해주세요."
             className="ml-2 flex-1 bg-transparent outline-none placeholder:text-muted-foreground"
           />
         </div>
