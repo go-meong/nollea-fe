@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 
-export const ImageUploader: React.FC = () => {
+const ImageUploader: React.FC = () => {
   const [preview, setPreview] = React.useState<string | ArrayBuffer | null>("");
 
   const formSchema = z.object({
@@ -105,3 +105,4 @@ export const ImageUploader: React.FC = () => {
     </Form>
   );
 };
+export default ImageUploader;
