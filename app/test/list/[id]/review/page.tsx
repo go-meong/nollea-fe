@@ -15,8 +15,8 @@ export default function Review() {
   };
 
   return (
-    <div className="w-[100%] h-[100%] bg-white" onClick={goBack}>
-      <div className="flex justify-end p-6">
+    <div className="w-[100%] h-[100%] bg-white">
+      <div className="flex justify-end p-6 hover:cursor-pointer" onClick={goBack}>
         <CloseOutlineIcon width={24} height={24} />
       </div>
 
@@ -39,7 +39,17 @@ export default function Review() {
             <DislikeThumbIcon width={28} height={27} color={!like ? "#ff6500" : "#B4B4B4"} />
           </Button>
         </div>
-        <Textarea />
+        <Textarea
+          placeholder="나만의 추억을 공유해주세요. (최대 50자)"
+          className="w-[80%] mt-10 h-[250px] resize-none p-5 .placeholder-[##AAAAAA]"
+          style={{ borderColor: "color-border-secondary", backgroundColor: "#f0f0f5" }}
+        />
+
+        <div className="w-[80%]">
+          <Button className="mt-20 bg-[#ff6500]" size="xl" stretch>
+            저장하기
+          </Button>
+        </div>
       </div>
     </div>
   );

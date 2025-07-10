@@ -10,6 +10,7 @@ import Image from "next/image";
 import CommonBadge from "@/app/_components/common/CommonBadge";
 import { useRouter } from "next/navigation";
 import TrafficBadge from "@/app/_components/common/TrafficBadge";
+import { Map } from "react-kakao-maps-sdk";
 
 export default function Page({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter();
@@ -35,8 +36,9 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
       <div className="relative w-[100%] h-[250px]">
         <Image src="/ex-img.png" alt="img" layout="fill" objectFit="cover" />
       </div>
+
       <Drawer open>
-        <DrawerContent className="h-[80%]">
+        <DrawerContent className="h-[80%] w-screen max-w-[600px] mx-auto">
           <div className="mx-auto w-full px-4 overflow-y-auto scrollbar-none mb-25">
             <DrawerHeader className="">
               <div className="flex gap-2">
@@ -63,8 +65,9 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                   <Text typography="subtitle1">운영 시간</Text>
                 </div>
                 {/* 지도 */}
-                <div className="h-[342px] w-[145px]">지도</div>
-
+                <div className="my-8">
+                  <Map center={{ lat: 33.5563, lng: 126.79581 }} style={{ width: "100%", height: "145px" }}></Map>
+                </div>
                 {/* 혼잡도 */}
                 <div className="flex">
                   <Text typography="subtitle1" className="mr-8">
@@ -72,7 +75,6 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                   </Text>
                   <TrafficBadge type="여유" />
                 </div>
-
                 {/* 버스 막차 */}
                 <div className="flex">
                   <Text typography="subtitle1" className="mr-4">
@@ -80,12 +82,12 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                   </Text>
                   <Text typography="subtitle1">운영 시간</Text>
                 </div>
-
                 {/* 리뷰 */}
                 <div className="flex">
                   <Text typography="subtitle1" className="mr-11">
                     리뷰
                   </Text>
+                  {/* 리뷰 like */}
                   <Text typography="subtitle1">
                     <div className="flex items-center gap-1">
                       <LikeThumbIcon />
@@ -96,6 +98,18 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                       <Text typography="subtitle1">20%</Text>
                     </div>
                   </Text>
+                </div>
+                {/* 리뷰 comment */}
+                <div className="flex flex-col ml-18 mt-3 gap-3">
+                  {["이런 야시장이 있는줄 몰랐는데 최고였어요!", "밤이 이렇게 맛있을 수가 있나요", "먹고 또 먹고 이야 최고다"].map((comment) => (
+                    <div
+                      key={comment}
+                      className="text-start rounded-t-xl rounded-l-xl px-4 py-2 text-black"
+                      style={{ backgroundColor: "var(--vapor-color-gray-100)" }}
+                    >
+                      {comment}
+                    </div>
+                  ))}
                 </div>
               </DrawerDescription>
             </DrawerHeader>
