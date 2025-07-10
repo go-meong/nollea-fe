@@ -1,6 +1,8 @@
 import "./globals.css";
 
 import { themeConfig } from "@/app/_lib/theme.config";
+import { ShootingStars } from "@/components/ui/shooting-stars";
+import { StarsBackground } from "@/components/ui/stars-background";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeProvider, ThemeScript } from "@vapor-ui/core";
 import type { Metadata } from "next";
@@ -34,6 +36,8 @@ export default function RootLayout({
         <QueryClientProvider>
           <ThemeProvider config={themeConfig}>
             <div className="mx-auto min-h-screen max-w-[600px]">{children}</div>
+            <ShootingStars />
+            <StarsBackground />
 
             <ReactQueryDevtools />
           </ThemeProvider>
