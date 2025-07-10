@@ -13,7 +13,7 @@ export default function Page() {
       <div className="flex-1 flex flex-col mt-14 gap-5">
         {nightTours.data.map((tour) => (
           <CommonCard
-            key={tour.title}
+            key={tour.id}
             id={tour.id}
             imgUrl={tour.imageUrl}
             badges={tour.categoryList}
