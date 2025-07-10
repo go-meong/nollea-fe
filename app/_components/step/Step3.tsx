@@ -1,7 +1,7 @@
+import { TMood, useSelectStore } from "@/app/_store/useSelectStore";
 import { Button, IconButton, RadioGroup, Text } from "@vapor-ui/core";
 import { BackPageOutlineIcon } from "@vapor-ui/icons";
 import CheckButton from "./CheckButton";
-import { TMood, useSelectStore } from "@/store/useSelectStore";
 
 interface IStep3 {
   goBack: () => void;
@@ -22,7 +22,14 @@ export default function Step3({ goBack, goNext }: IStep3) {
       <div>
         {/* 뒤로 가기 */}
 
-        <IconButton onClick={() => goBack()} size="xl" color="primary" variant="ghost" shape="square" aria-label="뒤로가기?">
+        <IconButton
+          onClick={() => goBack()}
+          size="xl"
+          color="primary"
+          variant="ghost"
+          shape="square"
+          aria-label="뒤로가기?"
+        >
           <BackPageOutlineIcon color="#525463" width={18} height={18} />
         </IconButton>
         {/* 상단 텍스트 */}

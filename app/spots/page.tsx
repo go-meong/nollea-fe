@@ -1,6 +1,6 @@
 "use client";
 
-import { useTourStore } from "@/store/useTourStore";
+import { useTourStore } from "@/app/_store/useTourStore";
 import CommonCard from "../_components/common/CommonCard";
 import { useNightTours } from "../_hooks";
 import Header from "./_components/Header";

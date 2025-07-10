@@ -1,8 +1,8 @@
+import { TActivity, useSelectStore } from "@/app/_store/useSelectStore";
 import { Button, IconButton, RadioGroup, Text } from "@vapor-ui/core";
 import { BackPageOutlineIcon } from "@vapor-ui/icons";
-import CheckButton from "./CheckButton";
-import { TActivity, useSelectStore } from "@/store/useSelectStore";
 import { useRouter } from "next/navigation";
+import CheckButton from "./CheckButton";
 
 interface IStep4 {
   goBack: () => void;
@@ -26,7 +26,14 @@ export default function Step4({ goBack }: IStep4) {
     <div className="flex flex-col flex-1 items-center justify-between">
       <div>
         {/* 뒤로 가기 */}
-        <IconButton onClick={() => goBack()} size="xl" color="primary" variant="ghost" shape="square" aria-label="뒤로가기?">
+        <IconButton
+          onClick={() => goBack()}
+          size="xl"
+          color="primary"
+          variant="ghost"
+          shape="square"
+          aria-label="뒤로가기?"
+        >
           <BackPageOutlineIcon color="#525463" width={18} height={18} />
         </IconButton>
 

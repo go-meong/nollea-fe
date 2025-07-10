@@ -1,8 +1,8 @@
+import { TJoin, useSelectStore } from "@/app/_store/useSelectStore";
 import { Button, IconButton, RadioGroup, Text } from "@vapor-ui/core";
 import { BackPageOutlineIcon } from "@vapor-ui/icons";
 import { useRouter } from "next/navigation";
 import CheckButton from "./CheckButton";
-import { TJoin, useSelectStore } from "@/store/useSelectStore";
 
 interface IStep1 {
   goNext: () => void;
@@ -22,7 +22,14 @@ export default function Step1({ goNext }: IStep1) {
     <div className="flex flex-col flex-1 items-center justify-between">
       <div>
         {/* 뒤로 가기 */}
-        <IconButton onClick={() => router.back()} size="xl" color="primary" variant="ghost" shape="square" aria-label="뒤로가기?">
+        <IconButton
+          onClick={() => router.back()}
+          size="xl"
+          color="primary"
+          variant="ghost"
+          shape="square"
+          aria-label="뒤로가기?"
+        >
           <BackPageOutlineIcon color="#525463" width={18} height={18} />
         </IconButton>
 

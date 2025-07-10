@@ -1,4 +1,4 @@
-import { IRecommendTour } from "@/store/useTourStore";
+import { IRecommendTour } from "@/app/_store/useTourStore";
 import { ApiResponse, http } from "../_lib/http";
 
 export const getRecommendTour = async (id: string): Promise<ApiResponse<IRecommendTour>> => {

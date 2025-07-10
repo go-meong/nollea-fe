@@ -1,12 +1,12 @@
 "use client";
 
 import CommonCard from "@/app/_components/common/CommonCard";
-import { Map, MapMarker } from "react-kakao-maps-sdk";
-import { Text } from "@vapor-ui/core";
-import { IRecommendTour, useTourStore } from "@/store/useTourStore";
-import { useSelectStore } from "@/store/useSelectStore";
-import { useRecommendTours } from "@/app/_hooks";
 import Loading from "@/app/_components/step/Loading";
+import { useRecommendTours } from "@/app/_hooks";
+import { useSelectStore } from "@/app/_store/useSelectStore";
+import { IRecommendTour, useTourStore } from "@/app/_store/useTourStore";
+import { Text } from "@vapor-ui/core";
+import { Map, MapMarker } from "react-kakao-maps-sdk";
 
 export default function Page() {
   const { join, vehicle, mood, activity } = useSelectStore();

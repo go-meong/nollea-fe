@@ -1,6 +1,6 @@
 "use client";
 
-import { useSelectStore } from "@/store/useSelectStore";
+import { useSelectStore } from "@/app/_store/useSelectStore";
 import { Nav } from "@vapor-ui/core";
 import Image from "next/image";
 import { useEffect } from "react";
