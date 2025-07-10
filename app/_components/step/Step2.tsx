@@ -1,4 +1,4 @@
-import { Button } from "@vapor-ui/core";
+import { Button, Text } from "@vapor-ui/core";
 import CheckButton from "./CheckButton";
 import { useState } from "react";
 import Image from "next/image";
@@ -23,9 +23,11 @@ export default function Step2({ goBack, goNext }: IStep2) {
         {/* 뒤로 가기 */}
         <Image className="hover:cursor-pointer" src="/back-icon.png" width={30} height={30} alt="back" onClick={goBack} />
         {/* 상단 텍스트 */}
-        <div className="text-white mt-4 mb-14 font-bold text-[26px]">
-          어떤 분위기의 밤을 <br />
-          즐기고 싶으신가요?
+        <div className="mt-4 mb-14">
+          <Text typography="heading3" foreground="accent">
+            어떤 분위기의 밤을 <br />
+            즐기고 싶으신가요?
+          </Text>
         </div>
         a
         <div className="flex flex-wrap gap-2 justify-center">
