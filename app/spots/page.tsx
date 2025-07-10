@@ -1,5 +1,6 @@
 "use client";
 
+import { useTourStore } from "@/store/useTourStore";
 import CommonCard from "../_components/common/CommonCard";
 import { useNightTours } from "../_hooks";
 import Header from "./_components/Header";
@@ -7,6 +8,7 @@ import UploadButton from "./_components/UploadButton";
 
 export default function Page() {
   const { data: nightTours } = useNightTours();
+  const { setRecommendTour } = useTourStore();
 
   return (
     <div className="flex-1 relative">
@@ -23,6 +25,7 @@ export default function Page() {
             time={tour.serviceHours}
             lat={tour.coordinates?.[0]}
             lon={tour.coordinates?.[1]}
+            onClick={() => setRecommendTour(tour)}
           />
         ))}
       </div>

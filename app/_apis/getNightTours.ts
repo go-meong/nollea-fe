@@ -10,6 +10,9 @@ type NightTour = {
   description: string;
   imageUrl: string;
   coordinates: [number, number];
+  recommendReason: string;
+  reviews: string[];
+  reviewRatios: [number, number];
 };
 
 export const getNightTours = async (): Promise<ApiResponse<NightTour[]>> => {

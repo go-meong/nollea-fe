@@ -28,7 +28,7 @@ export default function OperatingHours({
             step="60000"
             value={operatingHours[0]}
             onChange={(e) => setOperatingHours([e.target.value, operatingHours[1]])}
-            className="appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none h-8"
+            className="h-8"
             style={{
               backgroundColor: "var(--vapor-color-gray-900)",
               borderColor: "var(--vapor-color-gray-900)",
@@ -50,7 +50,7 @@ export default function OperatingHours({
             step="60000"
             value={operatingHours[1]}
             onChange={(e) => setOperatingHours([operatingHours[0], e.target.value])}
-            className="appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none h-8"
+            className="h-8"
             style={{
               backgroundColor: "var(--vapor-color-gray-900)",
               borderColor: "var(--vapor-color-gray-900)",
