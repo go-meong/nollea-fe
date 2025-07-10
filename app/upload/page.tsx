@@ -20,12 +20,7 @@ export default function UploadPage() {
   }, []);
 
   return (
-    <div
-      className="min-h-screen"
-      style={{
-        backgroundColor: "var(--vapor-color-black)",
-      }}
-    >
+    <div className="min-h-screen relative">
       <Header />
       <div className="py-5 px-7 flex flex-col gap-6">
         <PlaceName />

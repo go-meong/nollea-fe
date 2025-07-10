@@ -28,7 +28,7 @@ export default function Page() {
       </div>
 
       {/* list */}
-      <div className="w-full absolute left-0 bottom-0 bg-black h-[70%] rounded-t-3xl">
+      <div className="w-full absolute left-0 bottom-0 h-[70%] rounded-t-3xl">
         <div className="w-full mx-auto flex flex-col gap-4 pt-12 pb-5 px-5">
           <Text typography="heading3" foreground="accent" className="text-center mb-3">
             특별한 제주의 밤을 즐겨보세요!
