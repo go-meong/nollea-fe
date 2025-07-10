@@ -1,11 +1,12 @@
 "use client";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 export default function TimePicker() {
   return (
     <div className="flex flex-col gap-3">
-      <label htmlFor="time-picker" className="px-1">
-        Time
-      </label>
+      <Label htmlFor="time-picker" className="px-1">
+        운영 시간
+      </Label>
       <Input
         type="time"
         id="time-picker"

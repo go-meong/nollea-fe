@@ -6,13 +6,9 @@ import TimePicker from "./TimePicker";
 export default function UploadingSpotPage() {
   return (
     <div>
-      asd
       <Postcode />
-      asd
       <TimePicker />
-      asd
       <MultiSelect />
-      asd
       <ImageUploader />
     </div>
   );

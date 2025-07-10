@@ -30,7 +30,7 @@ export default function Postcode() {
 
   return (
     <button type="button" onClick={handleClick}>
-      Open
+      주소 버튼
     </button>
   );
 }
