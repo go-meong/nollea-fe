@@ -24,6 +24,7 @@ export default function Description({
         onChange={(e) => setDescription(e.target.value)}
         maxLength={50}
         className="w-full"
+        placeholder="예: 바다 전망 좋은 카페 (매주 화요일 휴무)"
         style={{
           outline: "none",
           backgroundColor: "var(--vapor-color-gray-900)",
