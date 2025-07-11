@@ -5,7 +5,6 @@ import { useRecommendTours } from "@/app/_hooks";
 import { useSelectStore } from "@/app/_store/useSelectStore";
 import { IRecommendTour, useTourStore } from "@/app/_store/useTourStore";
 import Loading from "@/app/test/_components/step/Loading";
-import { Text } from "@vapor-ui/core";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 
 export default function Page() {
@@ -35,9 +34,7 @@ export default function Page() {
       {/* list */}
       <div className="fixed z-10 h-[65%] w-full max-w-[600px] rounded-2xl bottom-0 bg-black overflow-y-scroll scrollbar-none">
         <div className="flex flex-col">
-          <Text typography="heading3" foreground="accent" className="text-center mb-6 mt-10">
-            특별한 제주의 밤을 즐겨보세요!
-          </Text>
+          <div className="text-white text-[22px] text-center mb-6 mt-10 font-bold">특별한 제주의 밤을 즐겨보세요!</div>
           <div className="flex flex-col gap-3 px-3">
             {data?.data.map((tour: IRecommendTour) => (
               <CommonCard

@@ -47,7 +47,7 @@ export default function RootLayout({
         {/* eslint-disable-next-line */}
         <script
           type="text/javascript"
-          src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_API_KEY}&libraries=services,clusterer`}
+          src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=7f056de832d9a5705f665a962d2a3f0f&libraries=services,clusterer`}
         ></script>
       </body>
     </html>
