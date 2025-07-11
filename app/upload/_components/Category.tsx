@@ -39,12 +39,12 @@ const FRAMEWORKS = [
     id: uuidv4(),
   },
   {
-    value: "FESTIVAL",
+    value: "NIGHT_VIEW",
     label: "야경",
     id: uuidv4(),
   },
   {
-    value: "FESTIVAL",
+    value: "ROMANTIC",
     label: "로맨틱",
     id: uuidv4(),
   },
