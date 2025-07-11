@@ -1,13 +1,7 @@
 "use client";
 
 import CommonBadge from "@/app/_components/CommonBadge";
-import {
-  Drawer,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-} from "@/app/_components/shadcn/ui/drawer";
+import { Drawer, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader } from "@/app/_components/shadcn/ui/drawer";
 import { useTourStore } from "@/app/_store/useTourStore";
 import { Button, Text } from "@vapor-ui/core";
 import { CloseOutlineIcon, DislikeThumbIcon, LikeThumbIcon } from "@vapor-ui/icons";
@@ -86,7 +80,6 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                 {coordinates && (
                   <div className="my-8">
                     <Map center={{ lat: coordinates[0], lng: coordinates[1] }} style={{ width: "100%", height: "145px" }}>
-                      {" "}
                       <MapMarker position={{ lat: coordinates[0], lng: coordinates[1] }}></MapMarker>
                     </Map>
                   </div>
