@@ -1,8 +1,8 @@
 import "./globals.css";
 
+import { ShootingStars } from "@/app/_components/shadcn/ui/shooting-stars";
+import { StarsBackground } from "@/app/_components/shadcn/ui/stars-background";
 import { themeConfig } from "@/app/_lib/theme.config";
-import { ShootingStars } from "@/components/ui/shooting-stars";
-import { StarsBackground } from "@/components/ui/stars-background";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeProvider, ThemeScript } from "@vapor-ui/core";
 import type { Metadata } from "next";

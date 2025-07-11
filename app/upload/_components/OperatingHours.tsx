@@ -1,5 +1,5 @@
 "use client";
-import { Input } from "@/components/ui/input";
+import { Input } from "@/app/_components/shadcn/ui/input";
 import { Text } from "@vapor-ui/core";
 
 export default function OperatingHours({

@@ -1,8 +1,14 @@
 "use client";
 
 import CommonBadge from "@/app/_components/CommonBadge";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+} from "@/app/_components/shadcn/ui/drawer";
 import { useTourStore } from "@/app/_store/useTourStore";
-import { Drawer, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader } from "@/components/ui/drawer";
 import { Button, Text } from "@vapor-ui/core";
 import { CloseOutlineIcon, DislikeThumbIcon, LikeThumbIcon } from "@vapor-ui/icons";
 import Image from "next/image";

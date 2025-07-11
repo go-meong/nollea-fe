@@ -1,4 +1,4 @@
-import { Textarea } from "@/components/ui/textfield";
+import { Textarea } from "@/app/_components/shadcn/ui/textfield";
 import { Text, TextInput } from "@vapor-ui/core";
 export default function Description({
   description,

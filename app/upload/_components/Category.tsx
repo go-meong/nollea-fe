@@ -3,8 +3,8 @@
 import { X } from "lucide-react";
 import * as React from "react";
 
-import { Badge } from "@/components/ui/badge";
-import { Command, CommandGroup, CommandItem, CommandList } from "@/components/ui/command";
+import { Badge } from "@/app/_components/shadcn/ui/badge";
+import { Command, CommandGroup, CommandItem, CommandList } from "@/app/_components/shadcn/ui/command";
 import { Text } from "@vapor-ui/core";
 import { Command as CommandPrimitive } from "cmdk";
 import { v4 as uuidv4 } from "uuid";

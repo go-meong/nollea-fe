@@ -1,8 +1,8 @@
 "use client";
 
+import { Textarea } from "@/app/_components/shadcn/ui/textfield";
 import { useReviewTour } from "@/app/_hooks";
 import { useTourStore } from "@/app/_store/useTourStore";
-import { Textarea } from "@/components/ui/textfield";
 import { Button, Text } from "@vapor-ui/core";
 import { CloseOutlineIcon, DislikeThumbIcon, LikeThumbIcon } from "@vapor-ui/icons";
 import { useRouter } from "next/navigation";
