@@ -24,11 +24,6 @@ const FRAMEWORKS = [
     id: uuidv4(),
   },
   {
-    value: "NIGHT_VIEW",
-    label: "야경 명소",
-    id: uuidv4(),
-  },
-  {
     value: "WALKING_PATH",
     label: "산책길",
     id: uuidv4(),
@@ -40,37 +35,17 @@ const FRAMEWORKS = [
   },
   {
     value: "FESTIVAL",
-    label: "테마파크",
-    id: uuidv4(),
-  },
-  {
-    value: "ROMANTIC",
-    label: "드라이브",
-    id: uuidv4(),
-  },
-  {
-    value: "NATURE",
-    label: "정원",
-    id: uuidv4(),
-  },
-  {
-    value: "WALKING_PATH",
-    label: "유적지",
-    id: uuidv4(),
-  },
-  {
-    value: "ROMANTIC",
-    label: "사찰",
+    label: "축제",
     id: uuidv4(),
   },
   {
     value: "FESTIVAL",
-    label: "공연",
+    label: "야경",
     id: uuidv4(),
   },
   {
     value: "FESTIVAL",
-    label: "유네스코 무형유산",
+    label: "로맨틱",
     id: uuidv4(),
   },
 ] satisfies Category[];
