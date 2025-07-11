@@ -14,23 +14,13 @@ import { CloseOutlineIcon, DislikeThumbIcon, LikeThumbIcon } from "@vapor-ui/ico
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { use } from "react";
-import { Map } from "react-kakao-maps-sdk";
+import { Map, MapMarker } from "react-kakao-maps-sdk";
 
 export default function Page({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter();
   const { id } = use(params);
   const { recommendTour } = useTourStore();
-  const {
-    title,
-    fullAddress,
-    imageUrl,
-    description,
-    recommendReason,
-    serviceHours,
-    coordinates,
-    reviewRatios,
-    reviews,
-  } = recommendTour;
+  const { title, fullAddress, imageUrl, description, recommendReason, serviceHours, coordinates, reviewRatios, reviews } = recommendTour;
 
   const goBack = () => {
     router.back();
@@ -53,10 +43,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
   return (
     <div className="w-[100%] h-full flex flex-col justify-between">
       {/* cancel button */}
-      <div
-        onClick={goBack}
-        className="absolute z-999 top-8 right-8 rounded-4xl bg-white w-[24px] h-[24px] hover:cursor-pointer"
-      >
+      <div onClick={goBack} className="absolute z-999 top-8 right-8 rounded-4xl bg-white w-[24px] h-[24px] hover:cursor-pointer">
         <div className="w-full h-full flex justify-center items-center">
           <CloseOutlineIcon />
         </div>
@@ -98,10 +85,10 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                 {/* 지도 */}
                 {coordinates && (
                   <div className="my-8">
-                    <Map
-                      center={{ lat: coordinates[0], lng: coordinates[1] }}
-                      style={{ width: "100%", height: "145px" }}
-                    ></Map>
+                    <Map center={{ lat: coordinates[0], lng: coordinates[1] }} style={{ width: "100%", height: "145px" }}>
+                      {" "}
+                      <MapMarker position={{ lat: coordinates[0], lng: coordinates[1] }}></MapMarker>
+                    </Map>
                   </div>
                 )}
 
