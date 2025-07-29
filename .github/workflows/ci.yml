@@ -55,6 +55,55 @@ jobs:
           echo "lowercase=${REPO_LOWER}" >> $GITHUB_OUTPUT
           echo "Lowercase repository name: ${REPO_LOWER}"
 
+      - name: Network connectivity test
+        run: |
+          echo "=== DNS Resolution Test ==="
+          nslookup nollea.duckdns.org || echo "nslookup failed"
+          dig nollea.duckdns.org || echo "dig failed"
+          
+          echo "=== Get resolved IP ==="
+          RESOLVED_IP=$(dig +short nollea.duckdns.org)
+          echo "Resolved IP: $RESOLVED_IP"
+          
+          echo "=== Ping Test ==="
+          ping -c 3 nollea.duckdns.org || echo "ping to domain failed"
+          
+          if [ -n "$RESOLVED_IP" ]; then
+            echo "=== Ping to resolved IP ==="
+            ping -c 3 $RESOLVED_IP || echo "ping to IP failed"
+          fi
+          
+          echo "=== Port connectivity test ==="
+          nc -zv nollea.duckdns.org 80 || echo "Port 80 not reachable"
+          nc -zv nollea.duckdns.org 443 || echo "Port 443 not reachable"
+          
+          echo "=== HTTP/HTTPS Test ==="
+          curl -I --connect-timeout 10 http://nollea.duckdns.org || echo "HTTP failed"
+          curl -I --connect-timeout 10 https://nollea.duckdns.org || echo "HTTPS failed"
+          
+          echo "=== Test specific API endpoint ==="
+          curl -v --connect-timeout 10 http://nollea.duckdns.org/api/health || echo "API endpoint failed"
+
+      - name: Check secrets (masked)
+        run: |
+          echo "API_BASE_URL: ${{ secrets.NEXT_PUBLIC_API_BASE_URL }}"
+          echo "KAKAO_KEY: ${{ secrets.NEXT_PUBLIC_KAKAO_APP_KEY }}"
+          echo "Secret length check:"
+          echo "API_BASE_URL length: ${#NEXT_PUBLIC_API_BASE_URL}"
+          echo "KAKAO_KEY length: ${#NEXT_PUBLIC_KAKAO_APP_KEY}"
+        env:
+          NEXT_PUBLIC_API_BASE_URL: ${{ secrets.NEXT_PUBLIC_API_BASE_URL }}
+          NEXT_PUBLIC_KAKAO_APP_KEY: ${{ secrets.NEXT_PUBLIC_KAKAO_APP_KEY }}
+
+      - name: Check secrets partially
+        run: |
+          echo "API_BASE_URL starts with: ${NEXT_PUBLIC_API_BASE_URL:0:10}..."
+          echo "API_BASE_URL ends with: ...${NEXT_PUBLIC_API_BASE_URL: -10}"
+          echo "KAKAO_KEY starts with: ${NEXT_PUBLIC_KAKAO_APP_KEY:0:5}..."
+        env:
+          NEXT_PUBLIC_API_BASE_URL: ${{ secrets.NEXT_PUBLIC_API_BASE_URL }}
+          NEXT_PUBLIC_KAKAO_APP_KEY: ${{ secrets.NEXT_PUBLIC_KAKAO_APP_KEY }}
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
