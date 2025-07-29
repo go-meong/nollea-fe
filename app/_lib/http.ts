@@ -5,5 +5,5 @@ export type ApiResponse<T> = {
 };
 
 export const http = axios.create({
-  baseURL: "https://nollea-backend.goorm.training",
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
 });
